@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OptiMasse Conseil — Optimisation des coûts salariaux & recrutement sur-mesure</title>
-  <meta name="description" content="Réduisez vos coûts d'embauche de 50% à 80%. Optimisation salariale et sourcing pour commerçants et PME — expertise terrain en restauration." />
+  <meta name="description" content="Jusqu'à 80 % de réduction sur vos coûts d'embauche. 0 € de salaire pendant la phase de prise en main. Accompagnement pour commerçants et PME." />
   <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -344,10 +344,10 @@
           Créé par un dirigeant, pour les dirigeants.
         </p>
         <h1 id="hero-title" class="mt-5 max-w-3xl font-display text-3xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.25rem] reveal is-visible" style="transition-delay: 80ms">
-          Recrutez et intégrez vos salariés en réduisant vos coûts d'embauche de 50% à 80%.
+          Jusqu'à 80&nbsp;% de réduction sur vos coûts d'embauche — et 0&nbsp;€ de salaire pendant la prise en main.
         </h1>
         <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-200 sm:text-lg reveal is-visible" style="transition-delay: 160ms">
-          Pour tous les commerçants et dirigeants de PME&nbsp;: on structure l'embauche sur des dispositifs légaux d'exonération et d'aide à l'emploi, et on gère le dossier de A à Z. Expertise terrain issue de la restauration.
+          Pour commerçants et dirigeants de PME&nbsp;: on structure votre recrutement pour maximiser vos économies, sans paperasse de votre côté. Expertise terrain issue de la restauration.
         </p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center reveal is-visible" style="transition-delay: 240ms">
           <button type="button" data-calendly-open
@@ -359,7 +359,7 @@
           </a>
         </div>
         <p class="mt-8 max-w-2xl text-sm text-slate-300 reveal is-visible" style="transition-delay: 320ms">
-          Paiement principalement au succès&nbsp;&nbsp;·&nbsp;&nbsp;Accompagnement A à Z&nbsp;&nbsp;·&nbsp;&nbsp;Leviers 100&nbsp;% légaux
+          0&nbsp;€ de salaire en pré-intégration&nbsp;&nbsp;·&nbsp;&nbsp;Jusqu'à −80&nbsp;% sur l'embauche&nbsp;&nbsp;·&nbsp;&nbsp;Accompagnement A à Z
         </p>
       </div>
     </section>
@@ -369,16 +369,16 @@
       <div class="mx-auto max-w-6xl px-5 lg:px-8">
         <div class="max-w-2xl reveal">
           <h2 id="sim-title" class="font-display text-3xl font-bold tracking-tight text-night md:text-4xl">
-            Comparez vos coûts : Embauche Classique vs. Ingénierie OptiMasse
+            Comparez vos coûts : Embauche classique vs. Solution OptiMasse
           </h2>
           <p class="mt-4 text-lg text-slate-600">
-            Estimez vos économies via le parcours d'ingénierie salariale en 2 phases, selon le salaire du poste.
+            Estimez vos économies en 2 phases — 0&nbsp;€ de salaire en pré-intégration, puis contrat à coût optimisé — selon le salaire et le nombre de postes.
           </p>
         </div>
 
         <!-- Controls -->
         <div class="mt-12 reveal rounded-lg border border-slate-200/80 bg-white p-6 shadow-soft sm:p-8">
-          <div class="grid gap-8 lg:grid-cols-2">
+          <div class="grid gap-8 lg:grid-cols-3">
             <div>
               <label for="salaire" class="block text-sm font-semibold text-night">
                 Salaire brut mensuel du poste
@@ -399,42 +399,52 @@
               </div>
               <p class="mt-2 text-sm text-slate-500"><span id="postes-label">2 postes</span></p>
             </div>
+            <div>
+              <label for="duree-preinteg" class="block text-sm font-semibold text-night">
+                Durée de pré-intégration
+              </label>
+              <div class="mt-4 flex items-center gap-4">
+                <input type="range" id="duree-preinteg" min="1" max="3" step="1" value="1" class="w-full" />
+                <span id="duree-preinteg-value" class="flex h-11 min-w-[4.5rem] items-center justify-center rounded-md bg-night px-3 font-display text-sm font-bold text-white">1 mois</span>
+              </div>
+              <p class="mt-2 text-sm text-slate-500">De 1 à 3 mois — 0&nbsp;€ de salaire pendant cette période</p>
+            </div>
           </div>
 
           <div class="mt-6">
-            <button type="button" id="sourcing-toggle" role="switch" aria-checked="false"
+            <button type="button" id="parcours-toggle" role="switch" aria-checked="true"
               class="group flex w-full items-center gap-4 rounded-md border border-slate-200 bg-mist px-4 py-3 text-left transition hover:border-slate-300 sm:w-auto">
-              <span class="toggle-track relative inline-flex h-7 w-12 shrink-0 items-center rounded-full bg-slate-300" id="toggle-track">
-                <span class="toggle-knob absolute left-0.5 h-6 w-6 rounded-full bg-white shadow" id="toggle-knob"></span>
+              <span class="toggle-track relative inline-flex h-7 w-12 shrink-0 items-center rounded-full bg-emerald" id="toggle-track">
+                <span class="toggle-knob absolute left-0.5 h-6 w-6 rounded-full bg-white shadow" id="toggle-knob" style="transform: translateX(1.25rem)"></span>
               </span>
               <span class="text-sm font-medium text-night">
-                Inclure le Sourcing de candidats<br />
-                <span class="font-normal text-slate-500">(+900&nbsp;€ HT / poste)</span>
+                Parcours Optimal<br />
+                <span class="font-normal text-slate-500" id="parcours-hint">900&nbsp;€ HT / poste — pré-intégration + embauche A à Z. Les 450&nbsp;€ HT de pré-intégration sont déductibles du parcours complet.</span>
               </span>
             </button>
           </div>
 
           <p class="mt-6 text-xs leading-relaxed text-slate-500">
-            Simulation indicative selon éligibilité du poste et du profil. Le diagnostic confirme le montage applicable à votre situation.
+            Simulation indicative selon éligibilité du poste et du profil. Le diagnostic confirme le potentiel d'économie applicable à votre situation.
           </p>
 
           <!-- Phases d'économie -->
           <div class="mt-10 grid gap-4 sm:grid-cols-2">
             <div class="rounded-lg border border-emerald/30 bg-emerald-50/50 p-5">
               <p class="text-xs font-semibold uppercase tracking-wider text-emerald-700">
-                Phase 1 — Immersion &amp; Intégration (1 mois minimum)
+                A — Pré-intégration / Formation sur-mesure
               </p>
               <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                Prise en charge intégrale de la masse salariale chargée durant la période d'intégration (de 1 à 3 mois selon le profil).
+                0&nbsp;€ de salaire pendant la phase de prise en main (1 à 3 mois selon le poste).
               </p>
               <div class="mt-4 rounded-md border border-emerald/40 bg-white px-4 py-3">
-                <p class="text-xs font-semibold uppercase tracking-wide text-emerald-700">Économie minimale garantie (Mois 1)</p>
+                <p class="text-xs font-semibold uppercase tracking-wide text-emerald-700">Économie pendant la pré-intégration</p>
                 <p id="eco-min-mois1" class="mt-1 font-display text-2xl font-bold text-night">—</p>
               </div>
             </div>
-            <div class="rounded-lg border border-emerald/30 bg-emerald-50/50 p-5">
-              <p class="text-xs font-semibold uppercase tracking-wider text-emerald-700">Phase 2 — Pérennisation &amp; Exonérations</p>
-              <p class="mt-1 text-sm text-slate-600">Aides + exonérations patronales lissées (11 mois)</p>
+            <div id="phase-b-card" class="rounded-lg border border-emerald/30 bg-emerald-50/50 p-5 transition-opacity duration-300">
+              <p class="text-xs font-semibold uppercase tracking-wider text-emerald-700">B — Contrat à coût optimisé (1<sup>re</sup> année)</p>
+              <p class="mt-1 text-sm text-slate-600">Optimisation des charges et aides sur la première année</p>
               <p id="gain-phase2" class="mt-3 font-display text-2xl font-bold text-night">—</p>
             </div>
           </div>
@@ -446,14 +456,14 @@
               <div>
                 <p class="text-xs font-bold uppercase tracking-wider text-emerald-800">Bonus accompagnement</p>
                 <p class="mt-1 text-sm leading-relaxed text-slate-700">
-                  <span class="font-semibold text-night">Bonus Ingénierie :</span> Prise en charge complémentaire du tutorat interne (jusqu'à 200&nbsp;€ / mois versés à l'entreprise pour l'encadrement).
+                  <span class="font-semibold text-night">Bonus tutorat :</span> prise en charge complémentaire de l'encadrement interne (jusqu'à 200&nbsp;€ / mois versés à l'entreprise).
                 </p>
               </div>
             </div>
             <div class="shrink-0 rounded-md bg-white px-4 py-2.5 text-left shadow-sm sm:text-right">
               <p class="text-xs font-semibold uppercase tracking-wide text-emerald-700">Bonus net à percevoir</p>
               <p id="bonus-tutorat" class="font-display text-lg font-bold text-night">—</p>
-              <p class="text-xs text-slate-500">min. 1 mois · jusqu'à 600&nbsp;€ / poste</p>
+              <p class="text-xs text-slate-500">selon durée · jusqu'à 600&nbsp;€ / poste</p>
             </div>
           </div>
 
@@ -461,14 +471,14 @@
           <div class="mt-6 grid gap-6 lg:grid-cols-2">
             <div class="rounded-lg border border-slate-200 bg-slate-50/80 p-6">
               <h3 class="font-display text-lg font-bold text-slate-700">Coût classique (1 an)</h3>
-              <p class="mt-1 text-sm text-slate-500">Masse salariale chargée + recrutement</p>
+              <p class="mt-1 text-sm text-slate-500">Masse salariale chargée + frais de recrutement</p>
               <dl class="mt-6 space-y-4 text-sm">
                 <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
                   <dt class="text-slate-600">Masse mensuelle chargée × 12<br /><span class="font-normal text-slate-500">brut × 1,25</span></dt>
                   <dd id="classique-masse-an" class="shrink-0 font-semibold text-night">—</dd>
                 </div>
                 <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
-                  <dt class="text-slate-600" id="frais-recrutement-label">Frais / temps de recrutement</dt>
+                  <dt class="text-slate-600" id="frais-recrutement-label">Temps / frais de recrutement (estimé)</dt>
                   <dd id="classique-frais" class="shrink-0 font-semibold text-night">—</dd>
                 </div>
                 <div class="flex justify-between gap-4 pt-1">
@@ -480,14 +490,14 @@
 
             <div class="rounded-lg border-2 border-emerald/40 bg-white p-6">
               <h3 class="font-display text-lg font-bold text-night">Solution OptiMasse (1 an)</h3>
-              <p class="mt-1 text-sm text-emerald-700">Masse salariale optimisée + honoraires</p>
+              <p class="mt-1 text-sm text-emerald-700">Coût optimisé + honoraires</p>
               <dl class="mt-6 space-y-4 text-sm">
                 <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
-                  <dt class="text-slate-600">Masse salariale optimisée (12 mois)<br /><span class="font-normal text-slate-500">classique − gains Phase 1 &amp; 2</span></dt>
+                  <dt class="text-slate-600">Masse salariale optimisée (12 mois)<br /><span class="font-normal text-slate-500">classique − gains phases A &amp; B</span></dt>
                   <dd id="opti-masse-an" class="shrink-0 font-semibold text-night">—</dd>
                 </div>
                 <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
-                  <dt class="text-slate-600">Honoraires OptiMasse<br /><span id="formule-label" class="font-normal text-slate-500">Montage Seul</span></dt>
+                  <dt class="text-slate-600">Honoraires OptiMasse<br /><span id="formule-label" class="font-normal text-slate-500">Parcours Optimal — 900 € HT / poste</span></dt>
                   <dd id="honoraires" class="shrink-0 font-semibold text-night">—</dd>
                 </div>
                 <div class="flex justify-between gap-4 pt-1">
@@ -535,17 +545,17 @@
         </div>
 
         <p class="reveal mt-6 text-xs leading-relaxed text-slate-500">
-          <span class="font-semibold text-slate-600">Note :</span> La Phase 1 d'immersion couvre un parcours personnalisé d'une durée minimale de 1 mois (pouvant s'étendre jusqu'à 3 mois selon la complexité du poste), durant lequel l'entreprise est exonérée à 100&nbsp;% du salaire et des cotisations.
+          <span class="font-semibold text-slate-600">Note :</span> La pré-intégration dure de 1 à 3 mois selon le poste. Pendant cette période, vous ne versez ni salaire ni cotisations (0&nbsp;€). Ensuite, le parcours Optimal structure un contrat à coût optimisé sur la première année.
         </p>
 
         <!-- Preuve chiffrée -->
         <aside class="reveal mt-10 border-l-4 border-emerald bg-white px-6 py-6 shadow-soft sm:px-8" aria-labelledby="preuve-title">
           <p class="text-xs font-semibold uppercase tracking-wider text-emerald-700">Exemple type — commerce de proximité</p>
           <h3 id="preuve-title" class="mt-2 font-display text-xl font-bold text-night sm:text-2xl">
-            Salaire 2&nbsp;000&nbsp;€ brut · 2 postes · Montage
+            Salaire 2&nbsp;000&nbsp;€ brut · 2 postes · Parcours Optimal
           </h3>
           <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
-            Le parcours d'ingénierie salariale en 2 phases combine immersion &amp; intégration, puis pérennisation &amp; exonérations. L'économie nette affichée = gain Phase&nbsp;1 + gain Phase&nbsp;2 − honoraires OptiMasse.
+            Le parcours en 2 phases combine pré-intégration (0&nbsp;€ de salaire) puis contrat à coût optimisé. L'économie nette affichée = gain phase&nbsp;A + gain phase&nbsp;B − honoraires OptiMasse.
           </p>
         </aside>
       </div>
@@ -566,16 +576,16 @@
         <div class="mt-12 grid gap-6 lg:grid-cols-2">
           <!-- Offre 1 -->
           <article class="reveal flex flex-col rounded-lg border border-slate-200 bg-mist p-8 transition hover:border-slate-300">
-            <h3 class="font-display text-xl font-bold text-night">Montage & Optimisation</h3>
-            <p class="mt-2 text-sm text-slate-500">Pour les dirigeants qui ont déjà trouvé leur candidat.</p>
-            <p class="mt-6 font-display text-4xl font-bold text-night">900&nbsp;€ <span class="text-lg font-semibold text-slate-500">HT</span></p>
+            <h3 class="font-display text-xl font-bold text-night">Pré-Intégration seule</h3>
+            <p class="mt-2 text-sm text-slate-500">Accompagnement pour intégrer et former un candidat sans charge salariale initiale.</p>
+            <p class="mt-6 font-display text-4xl font-bold text-night">450&nbsp;€ <span class="text-lg font-semibold text-slate-500">HT</span></p>
             <ul class="mt-8 flex-1 space-y-3 text-sm text-slate-700">
-              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Montage complet du dossier d'optimisation salariale</li>
-              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Prise en charge administrative à 100%</li>
-              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Structuration du parcours d'intégration et exonérations</li>
+              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>0&nbsp;€ de salaire pendant la phase de prise en main</li>
+              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Formation sur-mesure et suivi d'intégration</li>
+              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Prise en charge administrative de la pré-intégration</li>
             </ul>
             <p class="mt-8 border-t border-slate-200 pt-6 text-sm text-slate-600">
-              <span class="font-semibold text-night">Tarification :</span> 300&nbsp;€ d'acompte + 600&nbsp;€ payables <strong>uniquement au succès</strong>.
+              <span class="font-semibold text-night">À noter :</span> Les 450&nbsp;€ HT sont intégralement déduits si vous optez pour le parcours d'embauche complet.
             </p>
             <button type="button" data-calendly-open
               class="mt-6 w-full rounded-md border border-night bg-transparent px-5 py-3.5 text-sm font-semibold text-night transition hover:bg-night hover:text-white">
@@ -588,16 +598,16 @@
             <span class="absolute -top-3 right-6 bg-emerald px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
               Recommandé
             </span>
-            <h3 class="font-display text-xl font-bold text-night">Sourcing & Optimisation Clé en Main</h3>
-            <p class="mt-2 text-sm text-slate-500">Pour ceux qui cherchent un candidat et veulent réduire leurs coûts.</p>
-            <p class="mt-6 font-display text-4xl font-bold text-night">1&nbsp;800&nbsp;€ <span class="text-lg font-semibold text-slate-500">HT</span></p>
+            <h3 class="font-display text-xl font-bold text-night">Parcours Optimal</h3>
+            <p class="mt-2 text-sm text-slate-500">Pré-intégration + embauche : accompagnement A à Z jusqu'à l'intégration durable.</p>
+            <p class="mt-6 font-display text-4xl font-bold text-night">900&nbsp;€ <span class="text-lg font-semibold text-slate-500">HT</span></p>
             <ul class="mt-8 flex-1 space-y-3 text-sm text-slate-700">
-              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Sourcing, pré-sélection et présentation de profils qualifiés</li>
-              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Montage complet du dossier d'optimisation salariale</li>
-              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Gestion administrative intégrale de A à Z</li>
+              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Pré-intégration incluse (0&nbsp;€ de salaire pendant la prise en main)</li>
+              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Structuration de l'embauche à coût optimisé</li>
+              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Accompagnement administratif de A à Z</li>
             </ul>
             <p class="mt-8 border-t border-slate-200 pt-6 text-sm text-slate-600">
-              <span class="font-semibold text-night">Tarification :</span> 900&nbsp;€ à la commande + 900&nbsp;€ à la validation / embauche.
+              <span class="font-semibold text-night">Tarification :</span> 450&nbsp;€ HT à la commande + 450&nbsp;€ HT à la validation / embauche (ou 900&nbsp;€ HT en une fois).
             </p>
             <button type="button" data-calendly-open
               class="mt-6 w-full rounded-md bg-emerald px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-600">
@@ -616,21 +626,21 @@
             Comment on réduit vraiment vos coûts
           </h2>
           <p class="mt-4 text-lg text-slate-600">
-            Pas de montage opaque. Des leviers publics, documentés, activés selon l'éligibilité du poste et du profil.
+            Pas de process opaque. Des leviers publics, documentés, activés selon l'éligibilité du poste et du profil.
           </p>
         </div>
 
         <div class="mt-12 grid gap-10 md:grid-cols-3">
           <div class="reveal">
-            <h3 class="font-display text-lg font-bold text-night">Dispositifs légaux</h3>
+            <h3 class="font-display text-lg font-bold text-night">0&nbsp;€ pendant la prise en main</h3>
             <p class="mt-3 text-sm leading-relaxed text-slate-600">
-              Exonérations de charges, aides à l'embauche et parcours d'intégration prévus par la réglementation — uniquement si le poste et le candidat y sont éligibles.
+              La pré-intégration vous permet de former le candidat sans charge salariale initiale — jusqu'à plusieurs mois selon le poste.
             </p>
           </div>
           <div class="reveal" style="transition-delay: 80ms">
-            <h3 class="font-display text-lg font-bold text-night">Dossier monté pour vous</h3>
+            <h3 class="font-display text-lg font-bold text-night">Embauche à coût optimisé</h3>
             <p class="mt-3 text-sm leading-relaxed text-slate-600">
-              Nous préparons et suivons les formalités administratives. Vous validez, vous ne passez pas vos soirées sur les dossiers.
+              Nous structurons le contrat et les formalités pour maximiser les économies légales sur la première année. Vous validez, sans paperasse de votre côté.
             </p>
           </div>
           <div class="reveal" style="transition-delay: 160ms">
@@ -665,16 +675,16 @@
           </li>
           <li class="reveal relative" style="transition-delay: 100ms">
             <span class="font-display text-5xl font-extrabold text-emerald/40">02</span>
-            <h3 class="mt-3 font-display text-xl font-bold">Sourcing & montage</h3>
+            <h3 class="mt-3 font-display text-xl font-bold">Pré-intégration &amp; accompagnement</h3>
             <p class="mt-3 text-sm leading-relaxed text-slate-300">
-              Si choisi : recherche de candidats. Dans tous les cas : montage administratif et optimisation salariale par nos soins.
+              Formation sur-mesure, 0&nbsp;€ de salaire pendant la prise en main, suivi administratif par nos soins.
             </p>
           </li>
           <li class="reveal relative" style="transition-delay: 200ms">
             <span class="font-display text-5xl font-extrabold text-emerald/40">03</span>
-            <h3 class="mt-3 font-display text-xl font-bold">Intégration validée</h3>
+            <h3 class="mt-3 font-display text-xl font-bold">Embauche à coût optimisé</h3>
             <p class="mt-3 text-sm leading-relaxed text-slate-300">
-              Arrivée du candidat, économies confirmées, zéro stress administratif pour vous.
+              Passage en contrat durable, économies confirmées, zéro stress administratif pour vous.
             </p>
           </li>
         </ol>
@@ -690,20 +700,20 @@
         <div class="mt-10 space-y-3 reveal">
           <details class="group rounded-lg border border-slate-200 bg-white open:shadow-soft">
             <summary class="cursor-pointer list-none px-5 py-4 font-semibold text-night marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4">
-              Comment fonctionne le paiement au succès ?
+              Comment fonctionne le paiement ?
               <span class="text-slate-400 transition group-open:rotate-45 text-xl leading-none">+</span>
             </summary>
             <p class="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600">
-              Sur la formule Montage, une part majoritaire de nos honoraires n'est due qu'une fois le dossier validé et l'intégration engagée. Vous limitez ainsi le risque financier.
+              La pré-intégration seule est à 450&nbsp;€ HT. Le Parcours Optimal est à 900&nbsp;€ HT (450&nbsp;€ à la commande + 450&nbsp;€ à la validation / embauche). Les 450&nbsp;€ HT de pré-intégration sont intégralement déduits si vous passez au parcours d'embauche complet.
             </p>
           </details>
           <details class="group rounded-lg border border-slate-200 bg-white open:shadow-soft">
             <summary class="cursor-pointer list-none px-5 py-4 font-semibold text-night marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4">
-              Je n'ai pas encore de candidat. Que faire ?
+              Quelle formule choisir ?
               <span class="text-slate-400 transition group-open:rotate-45 text-xl leading-none">+</span>
             </summary>
             <p class="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600">
-              Optez pour la formule Sourcing & Optimisation : nous identifions, pré-sélectionnons et vous présentons des profils qualifiés, puis structurons l'intégration optimisée.
+              La pré-intégration seule convient si vous voulez former un candidat sans charge salariale initiale. Le Parcours Optimal (recommandé) ajoute l'accompagnement jusqu'à l'embauche à coût optimisé — A à Z.
             </p>
           </details>
           <details class="group rounded-lg border border-slate-200 bg-white open:shadow-soft">
@@ -712,7 +722,7 @@
               <span class="text-slate-400 transition group-open:rotate-45 text-xl leading-none">+</span>
             </summary>
             <p class="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600">
-              Oui. Nous activons uniquement des dispositifs prévus par la réglementation (exonérations, aides à l'embauche, parcours d'intégration selon éligibilité). Aucun contournement, aucun montage non documenté. L'étude préalable vérifie ce qui s'applique réellement à votre situation.
+              Oui. Nous nous appuyons uniquement sur des dispositifs légaux, selon l'éligibilité du poste et du profil. Aucun contournement. L'étude préalable vérifie ce qui s'applique réellement à votre situation.
             </p>
           </details>
           <details class="group rounded-lg border border-slate-200 bg-white open:shadow-soft">
@@ -721,7 +731,7 @@
               <span class="text-slate-400 transition group-open:rotate-45 text-xl leading-none">+</span>
             </summary>
             <p class="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600">
-              Tous types de commerçants et PME qui recrutent régulièrement. Nous sommes particulièrement à l'aise en restauration et CHR — c'est notre domaine d'origine — mais le montage s'applique à l'ensemble du commerce de proximité.
+              Tous types de commerçants et PME qui recrutent régulièrement. Nous sommes particulièrement à l'aise en restauration et CHR — c'est notre domaine d'origine — mais l'approche s'applique à l'ensemble du commerce de proximité.
             </p>
           </details>
         </div>
@@ -804,8 +814,8 @@
                 <select id="option" name="option" required
                   class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30">
                   <option value="">Sélectionner</option>
-                  <option value="montage">Montage seul</option>
-                  <option value="sourcing">Sourcing + Montage</option>
+                  <option value="preinteg">Pré-intégration seule</option>
+                  <option value="parcours">Parcours Optimal</option>
                 </select>
               </div>
             </div>
@@ -900,9 +910,13 @@
       const postesInput = document.getElementById('postes');
       const postesValue = document.getElementById('postes-value');
       const postesLabel = document.getElementById('postes-label');
-      const sourcingToggle = document.getElementById('sourcing-toggle');
+      const dureePreIntegInput = document.getElementById('duree-preinteg');
+      const dureePreIntegValue = document.getElementById('duree-preinteg-value');
+      const parcoursToggle = document.getElementById('parcours-toggle');
+      const parcoursHint = document.getElementById('parcours-hint');
       const toggleTrack = document.getElementById('toggle-track');
       const toggleKnob = document.getElementById('toggle-knob');
+      const phaseBCard = document.getElementById('phase-b-card');
       const gainPhase1El = document.getElementById('eco-min-mois1');
       const gainPhase2El = document.getElementById('gain-phase2');
       const classiqueMasseAn = document.getElementById('classique-masse-an');
@@ -924,7 +938,7 @@
       const barOptiLabel = document.getElementById('bar-opti-label');
       const postesDyn = document.querySelectorAll('.postes-dyn');
 
-      let avecSourcing = false;
+      let parcoursOptimal = true;
       let displayedSavings = 0;
 
       const SMIC_BRUT_2026 = 1867.02;
@@ -968,34 +982,27 @@
       function updateSimulator() {
         const salaireBrut = getSalaireBrut();
         const nbPostes = parseInt(postesInput.value, 10);
-
+        const dureePreInteg = parseInt(dureePreIntegInput.value, 10);
         const masseMensuelleChargeeParPoste = salaireBrut * 1.25;
-        const coutRecrutementClassique = avecSourcing ? 2500 : 1000;
+        const coutRecrutementClassique = 1000;
+        const totalClassiqueVal = ((masseMensuelleChargeeParPoste * 12) + coutRecrutementClassique) * nbPostes;
 
-        // Mode classique (1 an)
-        const totalClassiqueVal =
-          ((masseMensuelleChargeeParPoste * 12) + coutRecrutementClassique) * nbPostes;
+        // A — absence de salaire pendant pré-intégration
+        const gainA = masseMensuelleChargeeParPoste * dureePreInteg * nbPostes;
 
-        // Gain Phase 1 — 1 mois de masse salariale 100 % économisée
-        const gainPhase1 = masseMensuelleChargeeParPoste * nbPostes;
+        // B — optimisation 1ère année (only if parcoursOptimal)
+        const gainB = parcoursOptimal ? (2000 + (salaireBrut * 0.15 * 11)) * nbPostes : 0;
 
-        // Gain Phase 2 — aides (plafond ~5 000 €) + exonérations lissées sur 11 mois
-        const gainPhase2 = (2000 + (salaireBrut * 0.15 * 11)) * nbPostes;
-
-        // Honoraires OptiMasse
-        const honorairesUnitaire = avecSourcing ? 1800 : 900;
+        const honorairesUnitaire = parcoursOptimal ? 900 : 450;
         const totalHonorairesOptiMasse = honorairesUnitaire * nbPostes;
 
-        // Bonus tutorat : 200 € / mois / poste (min. 1 mois, jusqu'à 3 mois = 600 € / poste)
         const BONUS_TUTORAT_MENSUEL = 200;
-        const bonusTutoratMin = BONUS_TUTORAT_MENSUEL * nbPostes;
+        const bonusTutoratMin = BONUS_TUTORAT_MENSUEL * dureePreInteg * nbPostes;
         const bonusTutoratMax = BONUS_TUTORAT_MENSUEL * 3 * nbPostes;
 
-        const economiesGenerees = gainPhase1 + gainPhase2;
-        // Masse optimisée = coût classique − (Phase 1 + Phase 2)
+        const economiesGenerees = gainA + gainB;
         const masseSalarialeOptimisee = totalClassiqueVal - economiesGenerees;
         const totalOptiMasse = masseSalarialeOptimisee + totalHonorairesOptiMasse;
-        // Économie nette = classique − OptiMasse (= Phase 1 + Phase 2 − honoraires)
         const economieNetteCumulee = totalClassiqueVal - totalOptiMasse;
         const economieParPosteVal = economieNetteCumulee / nbPostes;
 
@@ -1006,22 +1013,29 @@
         salaireValue.textContent = formatSalaire(salaireBrut);
         postesValue.textContent = String(nbPostes);
         postesLabel.textContent = nbPostes === 1 ? '1 poste' : nbPostes + ' postes';
+        dureePreIntegValue.textContent = dureePreInteg === 1 ? '1 mois' : dureePreInteg + ' mois';
         postesDyn.forEach(function (el) { el.textContent = String(nbPostes); });
 
-        gainPhase1El.textContent = formatEuro(Math.round(gainPhase1));
-        gainPhase2El.textContent = formatEuro(Math.round(gainPhase2));
+        gainPhase1El.textContent = formatEuro(Math.round(gainA));
+        gainPhase2El.textContent = parcoursOptimal ? formatEuro(Math.round(gainB)) : '—';
+        if (phaseBCard) {
+          phaseBCard.style.opacity = parcoursOptimal ? '1' : '0.45';
+        }
         bonusTutoratEl.textContent = formatEuro(bonusTutoratMin) + ' → ' + formatEuro(bonusTutoratMax);
 
         classiqueMasseAn.textContent = formatEuro(Math.round(masseMensuelleChargeeParPoste * 12 * nbPostes));
-        fraisRecrutementLabel.textContent = avecSourcing
-          ? 'Cabinet de recrutement traditionnel'
-          : 'Temps interne de recrutement (estimé)';
+        fraisRecrutementLabel.textContent = 'Temps / frais de recrutement (estimé)';
         classiqueFrais.textContent = formatEuro(coutRecrutementClassique * nbPostes);
         classiqueTotal.textContent = formatEuro(totalClassiqueArrondi);
 
-        formuleLabel.textContent = avecSourcing
-          ? 'Sourcing + Montage — ' + formatEuro(honorairesUnitaire) + ' HT / poste'
-          : 'Montage Seul — ' + formatEuro(honorairesUnitaire) + ' HT / poste';
+        formuleLabel.textContent = parcoursOptimal
+          ? 'Parcours Optimal — 900 € HT / poste'
+          : 'Pré-intégration seule — 450 € HT / poste';
+        if (parcoursHint) {
+          parcoursHint.textContent = parcoursOptimal
+            ? '900 € HT / poste — pré-intégration + embauche A à Z. Les 450 € HT de pré-intégration sont déductibles du parcours complet.'
+            : '450 € HT / poste — pré-intégration seule. Déductibles si vous passez ensuite au Parcours Optimal.';
+        }
         optiMasseAn.textContent = formatEuro(Math.round(masseSalarialeOptimisee));
         honorairesEl.textContent = formatEuro(totalHonorairesOptiMasse) + ' HT';
         optiTotal.textContent = formatEuro(totalOptiArrondi);
@@ -1049,13 +1063,14 @@
 
       postesInput.addEventListener('input', updateSimulator);
       salaireInput.addEventListener('input', updateSimulator);
+      dureePreIntegInput.addEventListener('input', updateSimulator);
 
-      sourcingToggle.addEventListener('click', function () {
-        avecSourcing = !avecSourcing;
-        sourcingToggle.setAttribute('aria-checked', avecSourcing ? 'true' : 'false');
-        toggleTrack.classList.toggle('bg-slate-300', !avecSourcing);
-        toggleTrack.classList.toggle('bg-emerald', avecSourcing);
-        toggleKnob.style.transform = avecSourcing ? 'translateX(1.25rem)' : 'translateX(0)';
+      parcoursToggle.addEventListener('click', function () {
+        parcoursOptimal = !parcoursOptimal;
+        parcoursToggle.setAttribute('aria-checked', parcoursOptimal ? 'true' : 'false');
+        toggleTrack.classList.toggle('bg-slate-300', !parcoursOptimal);
+        toggleTrack.classList.toggle('bg-emerald', parcoursOptimal);
+        toggleKnob.style.transform = parcoursOptimal ? 'translateX(1.25rem)' : 'translateX(0)';
         updateSimulator();
       });
 
@@ -1139,7 +1154,7 @@
         const email = document.getElementById('email').value.trim();
         const nbPostes = document.getElementById('nb-postes').value;
         const option = document.getElementById('option').value;
-        const optionLabel = option === 'sourcing' ? 'Sourcing + Montage' : 'Montage seul';
+        const optionLabel = option === 'parcours' ? 'Parcours Optimal' : 'Pré-intégration seule';
 
         const lead = {
           prenom: prenom,
