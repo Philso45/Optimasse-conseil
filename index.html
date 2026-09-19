@@ -996,9 +996,10 @@
         const honorairesUnitaire = parcoursOptimal ? 900 : 450;
         const totalHonorairesOptiMasse = honorairesUnitaire * nbPostes;
 
+        // Bonus tutorat : jusqu'à 200 € / mois sur 1 à 3 mois (plafond par poste)
         const BONUS_TUTORAT_MENSUEL = 200;
-        const bonusTutoratMin = BONUS_TUTORAT_MENSUEL * dureePreInteg * nbPostes;
-        const bonusTutoratMax = BONUS_TUTORAT_MENSUEL * 3 * nbPostes;
+        const bonusTutoratMin = BONUS_TUTORAT_MENSUEL;
+        const bonusTutoratMax = BONUS_TUTORAT_MENSUEL * 3;
 
         const economiesGenerees = gainA + gainB;
         const masseSalarialeOptimisee = totalClassiqueVal - economiesGenerees;
