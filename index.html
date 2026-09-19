@@ -1,0 +1,1195 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OptiMasse Conseil — Optimisation des coûts salariaux & recrutement sur-mesure</title>
+  <meta name="description" content="Réduisez vos coûts d'embauche de 50% à 80%. Optimisation salariale et sourcing pour commerçants et PME — expertise terrain en restauration." />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            night: '#0F172A',
+            emerald: '#10B981',
+            mist: '#F8FAFC',
+          },
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            sans: ['Outfit', 'sans-serif'],
+          },
+          boxShadow: {
+            soft: '0 12px 40px -16px rgba(15, 23, 42, 0.18)',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #F8FAFC;
+      color: #0F172A;
+    }
+
+    .font-display { font-family: 'Syne', sans-serif; }
+
+    /* Fond pro conseil — night + wash emerald */
+    .hero-atmosphere {
+      background:
+        radial-gradient(ellipse 70% 55% at 75% 15%, rgba(16, 185, 129, 0.16), transparent 55%),
+        radial-gradient(ellipse 45% 40% at 8% 85%, rgba(148, 163, 184, 0.08), transparent 50%),
+        linear-gradient(165deg, #0B1220 0%, #0F172A 45%, #111827 100%);
+    }
+
+    .hero-veil {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 70% 65% at 50% 40%, black 10%, transparent 70%);
+    }
+
+    .hero-shapes {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(16, 185, 129, 0.22);
+    }
+    .hero-ring--lg {
+      top: 12%;
+      right: -6%;
+      width: min(520px, 58vw);
+      height: min(520px, 58vw);
+      animation: heroFloat 14s ease-in-out infinite;
+    }
+    .hero-ring--md {
+      top: 22%;
+      right: 4%;
+      width: min(360px, 42vw);
+      height: min(360px, 42vw);
+      border-color: rgba(255, 255, 255, 0.1);
+      animation: heroFloat 14s ease-in-out infinite reverse;
+      animation-delay: -3s;
+    }
+    .hero-ring--sm {
+      top: 34%;
+      right: 14%;
+      width: min(200px, 24vw);
+      height: min(200px, 24vw);
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+
+    .hero-frame {
+      position: absolute;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(16, 185, 129, 0.06));
+      backdrop-filter: blur(2px);
+    }
+    .hero-frame--a {
+      top: 28%;
+      right: 10%;
+      width: min(280px, 32vw);
+      height: min(170px, 20vw);
+      transform: rotate(-8deg);
+      animation: heroDrift 18s ease-in-out infinite;
+    }
+    .hero-frame--b {
+      top: 46%;
+      right: 18%;
+      width: min(220px, 26vw);
+      height: min(130px, 16vw);
+      transform: rotate(5deg);
+      border-color: rgba(16, 185, 129, 0.28);
+      background: linear-gradient(160deg, rgba(16, 185, 129, 0.1), rgba(255, 255, 255, 0.02));
+      animation: heroDrift 18s ease-in-out infinite reverse;
+      animation-delay: -6s;
+    }
+
+    .hero-line {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.45), transparent);
+    }
+    .hero-line--1 {
+      top: 38%;
+      right: 8%;
+      width: min(340px, 40vw);
+      transform: rotate(-12deg);
+    }
+    .hero-line--2 {
+      top: 58%;
+      right: 14%;
+      width: min(260px, 30vw);
+      transform: rotate(8deg);
+      opacity: 0.7;
+    }
+
+    .hero-dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.45);
+    }
+    .hero-dot--1 { top: 26%; right: 22%; }
+    .hero-dot--2 { top: 52%; right: 12%; opacity: 0.7; }
+    .hero-dot--3 { top: 64%; right: 28%; width: 4px; height: 4px; opacity: 0.5; }
+
+    .hero-bar {
+      position: absolute;
+      bottom: 14%;
+      right: 12%;
+      display: none;
+      align-items: flex-end;
+      gap: 8px;
+      height: 72px;
+      opacity: 0.55;
+    }
+    @media (min-width: 768px) {
+      .hero-bar { display: flex; }
+    }
+    .hero-bar span {
+      width: 10px;
+      border-radius: 2px 2px 0 0;
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.85), rgba(16, 185, 129, 0.15));
+    }
+    .hero-bar span:nth-child(1) { height: 28%; }
+    .hero-bar span:nth-child(2) { height: 48%; }
+    .hero-bar span:nth-child(3) { height: 72%; }
+    .hero-bar span:nth-child(4) { height: 100%; }
+    .hero-bar span:nth-child(5) { height: 62%; }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    @keyframes heroDrift {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 8px -6px; }
+    }
+
+    @media (max-width: 767px) {
+      .hero-frame--a,
+      .hero-frame--b,
+      .hero-line--1,
+      .hero-line--2 {
+        display: none;
+      }
+      .hero-ring--lg { right: -28%; opacity: 0.55; }
+      .hero-ring--md { right: -12%; opacity: 0.4; }
+      .hero-ring--sm { display: none; }
+    }
+
+    .section-wash {
+      background:
+        radial-gradient(ellipse 60% 50% at 100% 0%, rgba(16, 185, 129, 0.06), transparent 50%),
+        #F8FAFC;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .savings-pulse {
+      animation: savingsGlow 2.4s ease-in-out infinite;
+    }
+    @keyframes savingsGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.25); }
+      50% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 6px;
+      border-radius: 999px;
+      background: #e2e8f0;
+      outline: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #0F172A;
+      border: 3px solid #10B981;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.25);
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #0F172A;
+      border: 3px solid #10B981;
+      cursor: pointer;
+    }
+
+    .toggle-track {
+      transition: background-color 0.25s ease;
+    }
+    .toggle-knob {
+      transition: transform 0.25s ease;
+    }
+
+    .calendly-inline-widget {
+      min-width: 320px;
+      height: 700px;
+      width: 100%;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .toggle-knob, .savings-pulse,
+      .hero-ring--lg, .hero-ring--md, .hero-frame--a, .hero-frame--b {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- ========== HEADER ========== -->
+  <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 lg:px-8">
+      <a href="#top" class="font-display text-lg font-bold tracking-tight text-white md:text-xl" id="logo">
+        OptiMasse Conseil
+      </a>
+      <nav class="hidden items-center gap-8 text-sm font-medium text-slate-300 lg:flex" aria-label="Navigation principale">
+        <a href="#simulateur" class="transition hover:text-white">Simulateur</a>
+        <a href="#offres" class="transition hover:text-white">Nos Offres</a>
+        <a href="#leviers" class="transition hover:text-white">Comment ça marche</a>
+        <a href="#faq" class="transition hover:text-white">FAQ</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <button type="button" id="nav-cta" data-calendly-open
+          class="hidden rounded-md bg-emerald px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-600 sm:inline-flex">
+          Auditer ma masse salariale
+        </button>
+        <button type="button" id="menu-btn" class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/20 text-white lg:hidden" aria-label="Ouvrir le menu" aria-expanded="false">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden border-t border-white/10 bg-night/95 backdrop-blur-md lg:hidden">
+      <nav class="flex flex-col gap-1 px-5 py-4 text-sm font-medium text-slate-200" aria-label="Navigation mobile">
+        <a href="#simulateur" class="rounded-md px-3 py-2.5 hover:bg-white/5">Simulateur</a>
+        <a href="#offres" class="rounded-md px-3 py-2.5 hover:bg-white/5">Nos Offres</a>
+        <a href="#leviers" class="rounded-md px-3 py-2.5 hover:bg-white/5">Comment ça marche</a>
+        <a href="#faq" class="rounded-md px-3 py-2.5 hover:bg-white/5">FAQ</a>
+        <button type="button" data-calendly-open
+          class="mt-2 rounded-md bg-emerald px-4 py-3 text-left font-semibold text-white">
+          Auditer ma masse salariale
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ========== HERO ========== -->
+    <section class="hero-atmosphere relative min-h-[100svh] overflow-hidden text-white" aria-labelledby="hero-title">
+      <div class="hero-veil absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+      <div class="hero-shapes" aria-hidden="true">
+        <div class="hero-ring hero-ring--lg"></div>
+        <div class="hero-ring hero-ring--md"></div>
+        <div class="hero-ring hero-ring--sm"></div>
+        <div class="hero-frame hero-frame--a"></div>
+        <div class="hero-frame hero-frame--b"></div>
+        <div class="hero-line hero-line--1"></div>
+        <div class="hero-line hero-line--2"></div>
+        <span class="hero-dot hero-dot--1"></span>
+        <span class="hero-dot hero-dot--2"></span>
+        <span class="hero-dot hero-dot--3"></span>
+        <div class="hero-bar">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-center px-5 pb-16 pt-28 lg:px-8 lg:pt-24">
+        <p class="font-display text-2xl font-extrabold tracking-tight text-white sm:text-3xl md:text-4xl reveal is-visible">
+          OptiMasse Conseil
+        </p>
+        <p class="mt-3 text-sm font-medium tracking-wide text-emerald-300/90 sm:text-base reveal is-visible" style="transition-delay: 40ms">
+          Créé par un dirigeant, pour les dirigeants.
+        </p>
+        <h1 id="hero-title" class="mt-5 max-w-3xl font-display text-3xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.25rem] reveal is-visible" style="transition-delay: 80ms">
+          Recrutez et intégrez vos salariés en réduisant vos coûts d'embauche de 50% à 80%.
+        </h1>
+        <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-200 sm:text-lg reveal is-visible" style="transition-delay: 160ms">
+          Pour tous les commerçants et dirigeants de PME&nbsp;: on structure l'embauche sur des dispositifs légaux d'exonération et d'aide à l'emploi, et on gère le dossier de A à Z. Expertise terrain issue de la restauration.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center reveal is-visible" style="transition-delay: 240ms">
+          <button type="button" data-calendly-open
+            class="inline-flex items-center justify-center rounded-md bg-emerald px-6 py-3.5 text-base font-semibold text-white transition hover:bg-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald focus-visible:ring-offset-2 focus-visible:ring-offset-night">
+            Demander mon étude offerte (2 min)
+          </button>
+          <a href="#simulateur" class="inline-flex items-center justify-center rounded-md border border-white/25 px-6 py-3.5 text-base font-medium text-white transition hover:border-white/50 hover:bg-white/5">
+            Simuler mon économie
+          </a>
+        </div>
+        <p class="mt-8 max-w-2xl text-sm text-slate-300 reveal is-visible" style="transition-delay: 320ms">
+          Paiement principalement au succès&nbsp;&nbsp;·&nbsp;&nbsp;Accompagnement A à Z&nbsp;&nbsp;·&nbsp;&nbsp;Leviers 100&nbsp;% légaux
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== SIMULATEUR ========== -->
+    <section id="simulateur" class="section-wash py-20 lg:py-28" aria-labelledby="sim-title">
+      <div class="mx-auto max-w-6xl px-5 lg:px-8">
+        <div class="max-w-2xl reveal">
+          <h2 id="sim-title" class="font-display text-3xl font-bold tracking-tight text-night md:text-4xl">
+            Comparez vos coûts : Embauche Classique vs. Ingénierie OptiMasse
+          </h2>
+          <p class="mt-4 text-lg text-slate-600">
+            Estimez vos économies via le parcours d'ingénierie salariale en 2 phases, selon le salaire du poste.
+          </p>
+        </div>
+
+        <!-- Controls -->
+        <div class="mt-12 reveal rounded-lg border border-slate-200/80 bg-white p-6 shadow-soft sm:p-8">
+          <div class="grid gap-8 lg:grid-cols-2">
+            <div>
+              <label for="salaire" class="block text-sm font-semibold text-night">
+                Salaire brut mensuel du poste
+              </label>
+              <div class="mt-4 flex items-center gap-4">
+                <input type="range" id="salaire" min="1867.02" max="4000" step="50" value="1867.02" class="w-full" />
+                <span id="salaire-value" class="flex h-11 min-w-[6.5rem] items-center justify-center rounded-md bg-night px-3 font-display text-sm font-bold text-white tabular-nums sm:text-base">1&nbsp;867,02&nbsp;€</span>
+              </div>
+              <p class="mt-2 text-sm text-slate-500">De 1&nbsp;867,02&nbsp;€ (SMIC brut 2026) à 4&nbsp;000&nbsp;€ brut / mois</p>
+            </div>
+            <div>
+              <label for="postes" class="block text-sm font-semibold text-night">
+                Nombre de postes
+              </label>
+              <div class="mt-4 flex items-center gap-4">
+                <input type="range" id="postes" min="1" max="10" value="2" class="w-full" />
+                <span id="postes-value" class="flex h-11 min-w-[3rem] items-center justify-center rounded-md bg-night px-3 font-display text-lg font-bold text-white">2</span>
+              </div>
+              <p class="mt-2 text-sm text-slate-500"><span id="postes-label">2 postes</span></p>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <button type="button" id="sourcing-toggle" role="switch" aria-checked="false"
+              class="group flex w-full items-center gap-4 rounded-md border border-slate-200 bg-mist px-4 py-3 text-left transition hover:border-slate-300 sm:w-auto">
+              <span class="toggle-track relative inline-flex h-7 w-12 shrink-0 items-center rounded-full bg-slate-300" id="toggle-track">
+                <span class="toggle-knob absolute left-0.5 h-6 w-6 rounded-full bg-white shadow" id="toggle-knob"></span>
+              </span>
+              <span class="text-sm font-medium text-night">
+                Inclure le Sourcing de candidats<br />
+                <span class="font-normal text-slate-500">(+900&nbsp;€ HT / poste)</span>
+              </span>
+            </button>
+          </div>
+
+          <p class="mt-6 text-xs leading-relaxed text-slate-500">
+            Simulation indicative selon éligibilité du poste et du profil. Le diagnostic confirme le montage applicable à votre situation.
+          </p>
+
+          <!-- Phases d'économie -->
+          <div class="mt-10 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-lg border border-emerald/30 bg-emerald-50/50 p-5">
+              <p class="text-xs font-semibold uppercase tracking-wider text-emerald-700">
+                Phase 1 — Immersion &amp; Intégration (1 mois minimum)
+              </p>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                Prise en charge intégrale de la masse salariale chargée durant la période d'intégration (de 1 à 3 mois selon le profil).
+              </p>
+              <div class="mt-4 rounded-md border border-emerald/40 bg-white px-4 py-3">
+                <p class="text-xs font-semibold uppercase tracking-wide text-emerald-700">Économie minimale garantie (Mois 1)</p>
+                <p id="eco-min-mois1" class="mt-1 font-display text-2xl font-bold text-night">—</p>
+              </div>
+            </div>
+            <div class="rounded-lg border border-emerald/30 bg-emerald-50/50 p-5">
+              <p class="text-xs font-semibold uppercase tracking-wider text-emerald-700">Phase 2 — Pérennisation &amp; Exonérations</p>
+              <p class="mt-1 text-sm text-slate-600">Aides + exonérations patronales lissées (11 mois)</p>
+              <p id="gain-phase2" class="mt-3 font-display text-2xl font-bold text-night">—</p>
+            </div>
+          </div>
+
+          <!-- Bonus tutorat -->
+          <div class="mt-4 flex flex-col gap-3 rounded-lg border border-emerald/40 bg-emerald-50/80 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
+            <div class="flex gap-3">
+              <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-emerald text-sm text-white" aria-hidden="true">+</span>
+              <div>
+                <p class="text-xs font-bold uppercase tracking-wider text-emerald-800">Bonus accompagnement</p>
+                <p class="mt-1 text-sm leading-relaxed text-slate-700">
+                  <span class="font-semibold text-night">Bonus Ingénierie :</span> Prise en charge complémentaire du tutorat interne (jusqu'à 200&nbsp;€ / mois versés à l'entreprise pour l'encadrement).
+                </p>
+              </div>
+            </div>
+            <div class="shrink-0 rounded-md bg-white px-4 py-2.5 text-left shadow-sm sm:text-right">
+              <p class="text-xs font-semibold uppercase tracking-wide text-emerald-700">Bonus net à percevoir</p>
+              <p id="bonus-tutorat" class="font-display text-lg font-bold text-night">—</p>
+              <p class="text-xs text-slate-500">min. 1 mois · jusqu'à 600&nbsp;€ / poste</p>
+            </div>
+          </div>
+
+          <!-- Comparison coûts -->
+          <div class="mt-6 grid gap-6 lg:grid-cols-2">
+            <div class="rounded-lg border border-slate-200 bg-slate-50/80 p-6">
+              <h3 class="font-display text-lg font-bold text-slate-700">Coût classique (1 an)</h3>
+              <p class="mt-1 text-sm text-slate-500">Masse salariale chargée + recrutement</p>
+              <dl class="mt-6 space-y-4 text-sm">
+                <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
+                  <dt class="text-slate-600">Masse mensuelle chargée × 12<br /><span class="font-normal text-slate-500">brut × 1,25</span></dt>
+                  <dd id="classique-masse-an" class="shrink-0 font-semibold text-night">—</dd>
+                </div>
+                <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
+                  <dt class="text-slate-600" id="frais-recrutement-label">Frais / temps de recrutement</dt>
+                  <dd id="classique-frais" class="shrink-0 font-semibold text-night">—</dd>
+                </div>
+                <div class="flex justify-between gap-4 pt-1">
+                  <dt class="font-semibold text-night">Total classique</dt>
+                  <dd id="classique-total" class="font-display text-lg font-bold text-night">—</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div class="rounded-lg border-2 border-emerald/40 bg-white p-6">
+              <h3 class="font-display text-lg font-bold text-night">Solution OptiMasse (1 an)</h3>
+              <p class="mt-1 text-sm text-emerald-700">Masse salariale optimisée + honoraires</p>
+              <dl class="mt-6 space-y-4 text-sm">
+                <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
+                  <dt class="text-slate-600">Masse salariale optimisée (12 mois)<br /><span class="font-normal text-slate-500">classique − gains Phase 1 &amp; 2</span></dt>
+                  <dd id="opti-masse-an" class="shrink-0 font-semibold text-night">—</dd>
+                </div>
+                <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
+                  <dt class="text-slate-600">Honoraires OptiMasse<br /><span id="formule-label" class="font-normal text-slate-500">Montage Seul</span></dt>
+                  <dd id="honoraires" class="shrink-0 font-semibold text-night">—</dd>
+                </div>
+                <div class="flex justify-between gap-4 pt-1">
+                  <dt class="font-semibold text-night">Total avec OptiMasse</dt>
+                  <dd id="opti-total" class="font-display text-lg font-bold text-emerald">—</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+          <!-- Barre visuelle -->
+          <div class="mt-8 grid gap-3 sm:grid-cols-2" aria-hidden="true">
+            <div>
+              <div class="mb-1.5 flex justify-between text-xs font-medium text-slate-500">
+                <span>Coût classique</span>
+                <span id="bar-classique-label">—</span>
+              </div>
+              <div class="h-3 overflow-hidden rounded-full bg-slate-100">
+                <div id="bar-classique" class="h-full rounded-full bg-slate-400 transition-all duration-500" style="width:100%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="mb-1.5 flex justify-between text-xs font-medium text-emerald-700">
+                <span>Avec OptiMasse</span>
+                <span id="bar-opti-label">—</span>
+              </div>
+              <div class="h-3 overflow-hidden rounded-full bg-emerald-50">
+                <div id="bar-opti" class="h-full rounded-full bg-emerald transition-all duration-500" style="width:70%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Savings highlight -->
+          <div class="savings-pulse mt-8 rounded-lg bg-emerald px-6 py-8 text-center text-white sm:px-10">
+            <p class="text-sm font-semibold uppercase tracking-wider text-emerald-100">Économie nette cumulée</p>
+            <p id="economie-texte" class="mt-3 font-display text-2xl font-bold sm:text-3xl md:text-4xl">—</p>
+            <p id="economie-detail" class="mt-3 text-sm leading-relaxed text-emerald-100">—</p>
+            <p id="economie-bonus" class="mt-2 text-sm font-semibold text-white">—</p>
+            <p id="economie-par-poste" class="mt-2 text-emerald-100">—</p>
+            <button type="button" data-calendly-open
+              class="mt-6 inline-flex items-center justify-center rounded-md bg-night px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800">
+              Bloquer cette économie avec un conseiller
+            </button>
+          </div>
+        </div>
+
+        <p class="reveal mt-6 text-xs leading-relaxed text-slate-500">
+          <span class="font-semibold text-slate-600">Note :</span> La Phase 1 d'immersion couvre un parcours personnalisé d'une durée minimale de 1 mois (pouvant s'étendre jusqu'à 3 mois selon la complexité du poste), durant lequel l'entreprise est exonérée à 100&nbsp;% du salaire et des cotisations.
+        </p>
+
+        <!-- Preuve chiffrée -->
+        <aside class="reveal mt-10 border-l-4 border-emerald bg-white px-6 py-6 shadow-soft sm:px-8" aria-labelledby="preuve-title">
+          <p class="text-xs font-semibold uppercase tracking-wider text-emerald-700">Exemple type — commerce de proximité</p>
+          <h3 id="preuve-title" class="mt-2 font-display text-xl font-bold text-night sm:text-2xl">
+            Salaire 2&nbsp;000&nbsp;€ brut · 2 postes · Montage
+          </h3>
+          <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
+            Le parcours d'ingénierie salariale en 2 phases combine immersion &amp; intégration, puis pérennisation &amp; exonérations. L'économie nette affichée = gain Phase&nbsp;1 + gain Phase&nbsp;2 − honoraires OptiMasse.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ========== OFFRES ========== -->
+    <section id="offres" class="bg-white py-20 lg:py-28" aria-labelledby="offres-title">
+      <div class="mx-auto max-w-6xl px-5 lg:px-8">
+        <div class="max-w-2xl reveal">
+          <h2 id="offres-title" class="font-display text-3xl font-bold tracking-tight text-night md:text-4xl">
+            Nos 2 formules clé en main
+          </h2>
+          <p class="mt-4 text-lg text-slate-600">
+            Une tarification transparente, alignée sur votre résultat. Vous choisissez le niveau d'accompagnement.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 lg:grid-cols-2">
+          <!-- Offre 1 -->
+          <article class="reveal flex flex-col rounded-lg border border-slate-200 bg-mist p-8 transition hover:border-slate-300">
+            <h3 class="font-display text-xl font-bold text-night">Montage & Optimisation</h3>
+            <p class="mt-2 text-sm text-slate-500">Pour les dirigeants qui ont déjà trouvé leur candidat.</p>
+            <p class="mt-6 font-display text-4xl font-bold text-night">900&nbsp;€ <span class="text-lg font-semibold text-slate-500">HT</span></p>
+            <ul class="mt-8 flex-1 space-y-3 text-sm text-slate-700">
+              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Montage complet du dossier d'optimisation salariale</li>
+              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Prise en charge administrative à 100%</li>
+              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Structuration du parcours d'intégration et exonérations</li>
+            </ul>
+            <p class="mt-8 border-t border-slate-200 pt-6 text-sm text-slate-600">
+              <span class="font-semibold text-night">Tarification :</span> 300&nbsp;€ d'acompte + 600&nbsp;€ payables <strong>uniquement au succès</strong>.
+            </p>
+            <button type="button" data-calendly-open
+              class="mt-6 w-full rounded-md border border-night bg-transparent px-5 py-3.5 text-sm font-semibold text-night transition hover:bg-night hover:text-white">
+              Choisir cette formule
+            </button>
+          </article>
+
+          <!-- Offre 2 — recommandée -->
+          <article class="reveal relative flex flex-col rounded-lg border-2 border-emerald bg-white p-8 shadow-soft" style="transition-delay: 100ms">
+            <span class="absolute -top-3 right-6 bg-emerald px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+              Recommandé
+            </span>
+            <h3 class="font-display text-xl font-bold text-night">Sourcing & Optimisation Clé en Main</h3>
+            <p class="mt-2 text-sm text-slate-500">Pour ceux qui cherchent un candidat et veulent réduire leurs coûts.</p>
+            <p class="mt-6 font-display text-4xl font-bold text-night">1&nbsp;800&nbsp;€ <span class="text-lg font-semibold text-slate-500">HT</span></p>
+            <ul class="mt-8 flex-1 space-y-3 text-sm text-slate-700">
+              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Sourcing, pré-sélection et présentation de profils qualifiés</li>
+              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Montage complet du dossier d'optimisation salariale</li>
+              <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald"></span>Gestion administrative intégrale de A à Z</li>
+            </ul>
+            <p class="mt-8 border-t border-slate-200 pt-6 text-sm text-slate-600">
+              <span class="font-semibold text-night">Tarification :</span> 900&nbsp;€ à la commande + 900&nbsp;€ à la validation / embauche.
+            </p>
+            <button type="button" data-calendly-open
+              class="mt-6 w-full rounded-md bg-emerald px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-600">
+              Choisir cette formule
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LEVIERS / CONFIANCE ========== -->
+    <section id="leviers" class="section-wash py-20 lg:py-28" aria-labelledby="leviers-title">
+      <div class="mx-auto max-w-6xl px-5 lg:px-8">
+        <div class="max-w-2xl reveal">
+          <h2 id="leviers-title" class="font-display text-3xl font-bold tracking-tight text-night md:text-4xl">
+            Comment on réduit vraiment vos coûts
+          </h2>
+          <p class="mt-4 text-lg text-slate-600">
+            Pas de montage opaque. Des leviers publics, documentés, activés selon l'éligibilité du poste et du profil.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-10 md:grid-cols-3">
+          <div class="reveal">
+            <h3 class="font-display text-lg font-bold text-night">Dispositifs légaux</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">
+              Exonérations de charges, aides à l'embauche et parcours d'intégration prévus par la réglementation — uniquement si le poste et le candidat y sont éligibles.
+            </p>
+          </div>
+          <div class="reveal" style="transition-delay: 80ms">
+            <h3 class="font-display text-lg font-bold text-night">Dossier monté pour vous</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">
+              Nous préparons et suivons les formalités administratives. Vous validez, vous ne passez pas vos soirées sur les dossiers.
+            </p>
+          </div>
+          <div class="reveal" style="transition-delay: 160ms">
+            <h3 class="font-display text-lg font-bold text-night">Transparence avant engagement</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">
+              L'étude offerte clarifie le potentiel d'économie et les conditions. Si ce n'est pas éligible, on vous le dit clairement.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROCESSUS ========== -->
+    <section id="pourquoi" class="bg-night py-20 text-white lg:py-28" aria-labelledby="process-title">
+      <div class="mx-auto max-w-6xl px-5 lg:px-8">
+        <div class="max-w-2xl reveal">
+          <h2 id="process-title" class="font-display text-3xl font-bold tracking-tight md:text-4xl">
+            Un processus simple, en 3 étapes
+          </h2>
+          <p class="mt-4 text-lg text-slate-300">
+            Vous gardez le contrôle. Nous gérons la complexité administrative et financière.
+          </p>
+        </div>
+
+        <ol class="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
+          <li class="reveal relative">
+            <span class="font-display text-5xl font-extrabold text-emerald/40">01</span>
+            <h3 class="mt-3 font-display text-xl font-bold">Échange de 10 min</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">
+              Nous validons ensemble le besoin, le profil recherché et le potentiel d'économie sur le poste.
+            </p>
+          </li>
+          <li class="reveal relative" style="transition-delay: 100ms">
+            <span class="font-display text-5xl font-extrabold text-emerald/40">02</span>
+            <h3 class="mt-3 font-display text-xl font-bold">Sourcing & montage</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">
+              Si choisi : recherche de candidats. Dans tous les cas : montage administratif et optimisation salariale par nos soins.
+            </p>
+          </li>
+          <li class="reveal relative" style="transition-delay: 200ms">
+            <span class="font-display text-5xl font-extrabold text-emerald/40">03</span>
+            <h3 class="mt-3 font-display text-xl font-bold">Intégration validée</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">
+              Arrivée du candidat, économies confirmées, zéro stress administratif pour vous.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section id="faq" class="section-wash py-20 lg:py-28" aria-labelledby="faq-title">
+      <div class="mx-auto max-w-3xl px-5 lg:px-8">
+        <h2 id="faq-title" class="font-display text-3xl font-bold tracking-tight text-night md:text-4xl reveal">
+          Questions fréquentes
+        </h2>
+        <div class="mt-10 space-y-3 reveal">
+          <details class="group rounded-lg border border-slate-200 bg-white open:shadow-soft">
+            <summary class="cursor-pointer list-none px-5 py-4 font-semibold text-night marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4">
+              Comment fonctionne le paiement au succès ?
+              <span class="text-slate-400 transition group-open:rotate-45 text-xl leading-none">+</span>
+            </summary>
+            <p class="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Sur la formule Montage, une part majoritaire de nos honoraires n'est due qu'une fois le dossier validé et l'intégration engagée. Vous limitez ainsi le risque financier.
+            </p>
+          </details>
+          <details class="group rounded-lg border border-slate-200 bg-white open:shadow-soft">
+            <summary class="cursor-pointer list-none px-5 py-4 font-semibold text-night marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4">
+              Je n'ai pas encore de candidat. Que faire ?
+              <span class="text-slate-400 transition group-open:rotate-45 text-xl leading-none">+</span>
+            </summary>
+            <p class="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Optez pour la formule Sourcing & Optimisation : nous identifions, pré-sélectionnons et vous présentons des profils qualifiés, puis structurons l'intégration optimisée.
+            </p>
+          </details>
+          <details class="group rounded-lg border border-slate-200 bg-white open:shadow-soft">
+            <summary class="cursor-pointer list-none px-5 py-4 font-semibold text-night marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4">
+              Votre approche est-elle conforme ?
+              <span class="text-slate-400 transition group-open:rotate-45 text-xl leading-none">+</span>
+            </summary>
+            <p class="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Oui. Nous activons uniquement des dispositifs prévus par la réglementation (exonérations, aides à l'embauche, parcours d'intégration selon éligibilité). Aucun contournement, aucun montage non documenté. L'étude préalable vérifie ce qui s'applique réellement à votre situation.
+            </p>
+          </details>
+          <details class="group rounded-lg border border-slate-200 bg-white open:shadow-soft">
+            <summary class="cursor-pointer list-none px-5 py-4 font-semibold text-night marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4">
+              Pour quels secteurs intervenez-vous ?
+              <span class="text-slate-400 transition group-open:rotate-45 text-xl leading-none">+</span>
+            </summary>
+            <p class="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600">
+              Tous types de commerçants et PME qui recrutent régulièrement. Nous sommes particulièrement à l'aise en restauration et CHR — c'est notre domaine d'origine — mais le montage s'applique à l'ensemble du commerce de proximité.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PRISE DE RDV ========== -->
+    <section id="contact" class="bg-white py-20 lg:py-28" aria-labelledby="contact-title">
+      <div class="mx-auto max-w-4xl px-5 lg:px-8">
+        <div class="reveal text-center">
+          <h2 id="contact-title" class="font-display text-3xl font-bold tracking-tight text-night md:text-4xl">
+            Obtenez votre diagnostic d'économie
+          </h2>
+          <p class="mt-4 text-lg text-slate-600">
+            Remplissez vos infos puis réservez un créneau, ou choisissez directement un horaire dans le calendrier.
+          </p>
+        </div>
+
+        <!-- Sélecteur d'option -->
+        <div class="reveal mt-10 flex justify-center" role="tablist" aria-label="Mode de prise de contact">
+          <div class="inline-flex rounded-md border border-slate-200 bg-mist p-1">
+            <button type="button" id="tab-form" role="tab" aria-selected="true" aria-controls="panel-form"
+              class="rounded px-4 py-2.5 text-sm font-semibold text-white bg-night transition">
+              Formulaire + RDV
+            </button>
+            <button type="button" id="tab-calendly" role="tab" aria-selected="false" aria-controls="panel-calendly"
+              class="rounded px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:text-night">
+              Réserver un créneau
+            </button>
+          </div>
+        </div>
+
+        <!-- Option A : Formulaire puis Calendly popup -->
+        <div id="panel-form" role="tabpanel" aria-labelledby="tab-form" class="reveal mt-8">
+          <form id="contact-form" class="mx-auto max-w-2xl space-y-5 rounded-lg border border-slate-200 bg-mist p-6 sm:p-8" novalidate>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="prenom" class="block text-sm font-medium text-night">Prénom</label>
+                <input type="text" id="prenom" name="prenom" required autocomplete="given-name"
+                  class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
+              </div>
+              <div>
+                <label for="nom" class="block text-sm font-medium text-night">Nom</label>
+                <input type="text" id="nom" name="nom" required autocomplete="family-name"
+                  class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
+              </div>
+            </div>
+            <div>
+              <label for="entreprise" class="block text-sm font-medium text-night">Nom de l'établissement / Entreprise</label>
+              <input type="text" id="entreprise" name="entreprise" required autocomplete="organization"
+                class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="telephone" class="block text-sm font-medium text-night">Téléphone</label>
+                <input type="tel" id="telephone" name="telephone" required autocomplete="tel"
+                  class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-night">Email</label>
+                <input type="email" id="email" name="email" required autocomplete="email"
+                  class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
+              </div>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label for="nb-postes" class="block text-sm font-medium text-night">Nombre de postes à pourvoir</label>
+                <select id="nb-postes" name="nb_postes" required
+                  class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30">
+                  <option value="">Sélectionner</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5+</option>
+                </select>
+              </div>
+              <div>
+                <label for="option" class="block text-sm font-medium text-night">Option souhaitée</label>
+                <select id="option" name="option" required
+                  class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30">
+                  <option value="">Sélectionner</option>
+                  <option value="montage">Montage seul</option>
+                  <option value="sourcing">Sourcing + Montage</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit"
+              class="w-full rounded-md bg-emerald px-6 py-3.5 text-base font-semibold text-white transition hover:bg-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald focus-visible:ring-offset-2">
+              Obtenir mon diagnostic d'économie offert
+            </button>
+            <p class="text-center text-xs text-slate-500">
+              Après validation, le calendrier s'ouvre pour choisir votre créneau téléphonique.
+            </p>
+            <p id="form-success" class="hidden text-center text-sm font-medium text-emerald-700" role="status">
+              Merci. Choisissez maintenant votre créneau dans la fenêtre Calendly.
+            </p>
+          </form>
+        </div>
+
+        <!-- Option B : Embed Calendly inline -->
+        <div id="panel-calendly" role="tabpanel" aria-labelledby="tab-calendly" class="reveal mt-8 hidden" hidden>
+          <div class="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-soft">
+            <div
+              id="calendly-inline"
+              class="calendly-inline-widget"
+              data-url="https://calendly.com/ton-lien-calendly/diagnostic-15min"
+              style="min-width:320px;height:700px;"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="border-t border-slate-200 bg-night text-slate-400">
+    <div class="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-12 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+      <div>
+        <p class="font-display text-lg font-bold text-white">OptiMasse Conseil</p>
+        <p class="mt-1 text-sm">Optimisation salariale & recrutement pour commerçants et PME — expertise restauration.</p>
+      </div>
+      <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm" aria-label="Liens légaux">
+        <a href="#mentions" class="hover:text-white transition">Mentions légales</a>
+        <a href="#confidentialite" class="hover:text-white transition">Politique de confidentialité</a>
+      </nav>
+    </div>
+    <div class="border-t border-white/10">
+      <div class="mx-auto max-w-6xl px-5 py-6 text-xs text-slate-500 lg:px-8">
+        <p>&copy; <span id="year"></span> OptiMasse Conseil. Tous droits réservés.</p>
+        <div id="mentions" class="mt-6 space-y-2 scroll-mt-24">
+          <p class="font-semibold text-slate-400">Mentions légales</p>
+          <p>OptiMasse Conseil — Conseil en optimisation de la masse salariale et accompagnement au recrutement.</p>
+          <ul class="list-none space-y-1">
+            <li>Forme juridique / capital : <span class="text-slate-400">[à compléter]</span></li>
+            <li>Siège social : <span class="text-slate-400">[adresse à compléter]</span></li>
+            <li>SIRET : <span class="text-slate-400">[à compléter]</span> — RCS : <span class="text-slate-400">[à compléter]</span></li>
+            <li>Directeur de la publication : <span class="text-slate-400">[nom à compléter]</span></li>
+            <li>Contact : <span class="text-slate-400">[email / téléphone à compléter]</span></li>
+            <li>Hébergeur : <span class="text-slate-400">[nom, adresse, téléphone à compléter]</span></li>
+          </ul>
+        </div>
+        <div id="confidentialite" class="mt-6 space-y-2 scroll-mt-24">
+          <p class="font-semibold text-slate-400">Politique de confidentialité</p>
+          <p>Les données collectées via le formulaire (identité, entreprise, téléphone, email, besoins RH) servent uniquement à vous recontacter pour un diagnostic ou un rendez-vous. Elles sont transmises via Calendly lors de la prise de créneau et peuvent être conservées localement sur votre navigateur le temps de la demande. Elles ne sont ni vendues ni cédées à des tiers. Vous disposez d'un droit d'accès, de rectification et de suppression en nous contactant à l'adresse indiquée ci-dessus.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* ——— Calendly : collez votre URL d'événement ici (1 seul endroit) ——— */
+      const CALENDLY_URL = 'https://calendly.com/ton-lien-calendly/diagnostic-15min';
+
+      function openCalendly(prefill) {
+        if (typeof Calendly === 'undefined' || !Calendly.initPopupWidget) {
+          window.open(CALENDLY_URL, '_blank', 'noopener,noreferrer');
+          return;
+        }
+        const opts = { url: CALENDLY_URL };
+        if (prefill) opts.prefill = prefill;
+        Calendly.initPopupWidget(opts);
+      }
+
+      document.querySelectorAll('[data-calendly-open]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          openCalendly();
+        });
+      });
+
+      const salaireInput = document.getElementById('salaire');
+      const salaireValue = document.getElementById('salaire-value');
+      const postesInput = document.getElementById('postes');
+      const postesValue = document.getElementById('postes-value');
+      const postesLabel = document.getElementById('postes-label');
+      const sourcingToggle = document.getElementById('sourcing-toggle');
+      const toggleTrack = document.getElementById('toggle-track');
+      const toggleKnob = document.getElementById('toggle-knob');
+      const gainPhase1El = document.getElementById('eco-min-mois1');
+      const gainPhase2El = document.getElementById('gain-phase2');
+      const classiqueMasseAn = document.getElementById('classique-masse-an');
+      const classiqueFrais = document.getElementById('classique-frais');
+      const fraisRecrutementLabel = document.getElementById('frais-recrutement-label');
+      const formuleLabel = document.getElementById('formule-label');
+      const honorairesEl = document.getElementById('honoraires');
+      const optiMasseAn = document.getElementById('opti-masse-an');
+      const optiTotal = document.getElementById('opti-total');
+      const classiqueTotal = document.getElementById('classique-total');
+      const economieTexte = document.getElementById('economie-texte');
+      const economieDetail = document.getElementById('economie-detail');
+      const economieBonus = document.getElementById('economie-bonus');
+      const economieParPoste = document.getElementById('economie-par-poste');
+      const bonusTutoratEl = document.getElementById('bonus-tutorat');
+      const barClassique = document.getElementById('bar-classique');
+      const barOpti = document.getElementById('bar-opti');
+      const barClassiqueLabel = document.getElementById('bar-classique-label');
+      const barOptiLabel = document.getElementById('bar-opti-label');
+      const postesDyn = document.querySelectorAll('.postes-dyn');
+
+      let avecSourcing = false;
+      let displayedSavings = 0;
+
+      const SMIC_BRUT_2026 = 1867.02;
+
+      function formatEuro(n) {
+        return new Intl.NumberFormat('fr-FR', {
+          style: 'currency',
+          currency: 'EUR',
+          maximumFractionDigits: 0,
+        }).format(n);
+      }
+
+      function formatSalaire(n) {
+        const hasCents = Math.abs(n - Math.round(n)) > 0.001;
+        return new Intl.NumberFormat('fr-FR', {
+          style: 'currency',
+          currency: 'EUR',
+          minimumFractionDigits: hasCents ? 2 : 0,
+          maximumFractionDigits: hasCents ? 2 : 0,
+        }).format(n);
+      }
+
+      function getSalaireBrut() {
+        const raw = parseFloat(salaireInput.value);
+        if (!Number.isFinite(raw) || raw < SMIC_BRUT_2026) return SMIC_BRUT_2026;
+        if (raw > 4000) return 4000;
+        return raw;
+      }
+
+      function animateNumber(from, to, duration, onUpdate) {
+        const start = performance.now();
+        function frame(now) {
+          const t = Math.min(1, (now - start) / duration);
+          const eased = 1 - Math.pow(1 - t, 3);
+          onUpdate(Math.round(from + (to - from) * eased));
+          if (t < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
+
+      function updateSimulator() {
+        const salaireBrut = getSalaireBrut();
+        const nbPostes = parseInt(postesInput.value, 10);
+
+        const masseMensuelleChargeeParPoste = salaireBrut * 1.25;
+        const coutRecrutementClassique = avecSourcing ? 2500 : 1000;
+
+        // Mode classique (1 an)
+        const totalClassiqueVal =
+          ((masseMensuelleChargeeParPoste * 12) + coutRecrutementClassique) * nbPostes;
+
+        // Gain Phase 1 — 1 mois de masse salariale 100 % économisée
+        const gainPhase1 = masseMensuelleChargeeParPoste * nbPostes;
+
+        // Gain Phase 2 — aides (plafond ~5 000 €) + exonérations lissées sur 11 mois
+        const gainPhase2 = (2000 + (salaireBrut * 0.15 * 11)) * nbPostes;
+
+        // Honoraires OptiMasse
+        const honorairesUnitaire = avecSourcing ? 1800 : 900;
+        const totalHonorairesOptiMasse = honorairesUnitaire * nbPostes;
+
+        // Bonus tutorat : 200 € / mois / poste (min. 1 mois, jusqu'à 3 mois = 600 € / poste)
+        const BONUS_TUTORAT_MENSUEL = 200;
+        const bonusTutoratMin = BONUS_TUTORAT_MENSUEL * nbPostes;
+        const bonusTutoratMax = BONUS_TUTORAT_MENSUEL * 3 * nbPostes;
+
+        const economiesGenerees = gainPhase1 + gainPhase2;
+        // Masse optimisée = coût classique − (Phase 1 + Phase 2)
+        const masseSalarialeOptimisee = totalClassiqueVal - economiesGenerees;
+        const totalOptiMasse = masseSalarialeOptimisee + totalHonorairesOptiMasse;
+        // Économie nette = classique − OptiMasse (= Phase 1 + Phase 2 − honoraires)
+        const economieNetteCumulee = totalClassiqueVal - totalOptiMasse;
+        const economieParPosteVal = economieNetteCumulee / nbPostes;
+
+        const totalClassiqueArrondi = Math.round(totalClassiqueVal);
+        const totalOptiArrondi = Math.round(totalOptiMasse);
+        const economieArrondie = Math.round(economieNetteCumulee);
+
+        salaireValue.textContent = formatSalaire(salaireBrut);
+        postesValue.textContent = String(nbPostes);
+        postesLabel.textContent = nbPostes === 1 ? '1 poste' : nbPostes + ' postes';
+        postesDyn.forEach(function (el) { el.textContent = String(nbPostes); });
+
+        gainPhase1El.textContent = formatEuro(Math.round(gainPhase1));
+        gainPhase2El.textContent = formatEuro(Math.round(gainPhase2));
+        bonusTutoratEl.textContent = formatEuro(bonusTutoratMin) + ' → ' + formatEuro(bonusTutoratMax);
+
+        classiqueMasseAn.textContent = formatEuro(Math.round(masseMensuelleChargeeParPoste * 12 * nbPostes));
+        fraisRecrutementLabel.textContent = avecSourcing
+          ? 'Cabinet de recrutement traditionnel'
+          : 'Temps interne de recrutement (estimé)';
+        classiqueFrais.textContent = formatEuro(coutRecrutementClassique * nbPostes);
+        classiqueTotal.textContent = formatEuro(totalClassiqueArrondi);
+
+        formuleLabel.textContent = avecSourcing
+          ? 'Sourcing + Montage — ' + formatEuro(honorairesUnitaire) + ' HT / poste'
+          : 'Montage Seul — ' + formatEuro(honorairesUnitaire) + ' HT / poste';
+        optiMasseAn.textContent = formatEuro(Math.round(masseSalarialeOptimisee));
+        honorairesEl.textContent = formatEuro(totalHonorairesOptiMasse) + ' HT';
+        optiTotal.textContent = formatEuro(totalOptiArrondi);
+
+        barClassique.style.width = '100%';
+        barOpti.style.width = Math.max(8, Math.round((totalOptiArrondi / totalClassiqueArrondi) * 100)) + '%';
+        barClassiqueLabel.textContent = formatEuro(totalClassiqueArrondi);
+        barOptiLabel.textContent = formatEuro(totalOptiArrondi);
+
+        economieDetail.textContent =
+          'Total classique (' + formatEuro(totalClassiqueArrondi) +
+          ') − Total OptiMasse (' + formatEuro(totalOptiArrondi) +
+          ') = ' + formatEuro(economieArrondie) + " d'économie NETTE";
+
+        economieBonus.textContent =
+          'Bonus net à percevoir (tutorat) : ' + formatEuro(bonusTutoratMin) +
+          ' minimum · jusqu\'à ' + formatEuro(bonusTutoratMax);
+
+        animateNumber(displayedSavings, economieArrondie, 450, function (v) {
+          displayedSavings = v;
+          economieTexte.textContent = formatEuro(v) + " d'économie NETTE au total !";
+        });
+        economieParPoste.textContent = 'soit ' + formatEuro(Math.round(economieParPosteVal)) + ' par poste';
+      }
+
+      postesInput.addEventListener('input', updateSimulator);
+      salaireInput.addEventListener('input', updateSimulator);
+
+      sourcingToggle.addEventListener('click', function () {
+        avecSourcing = !avecSourcing;
+        sourcingToggle.setAttribute('aria-checked', avecSourcing ? 'true' : 'false');
+        toggleTrack.classList.toggle('bg-slate-300', !avecSourcing);
+        toggleTrack.classList.toggle('bg-emerald', avecSourcing);
+        toggleKnob.style.transform = avecSourcing ? 'translateX(1.25rem)' : 'translateX(0)';
+        updateSimulator();
+      });
+
+      const header = document.getElementById('site-header');
+      function onScroll() {
+        const scrolled = window.scrollY > 40;
+        header.classList.toggle('bg-night/95', scrolled);
+        header.classList.toggle('backdrop-blur-md', scrolled);
+        header.classList.toggle('shadow-soft', scrolled);
+        header.classList.toggle('border-b', scrolled);
+        header.classList.toggle('border-white/10', scrolled);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      menuBtn.addEventListener('click', function () {
+        const open = mobileMenu.classList.toggle('hidden') === false;
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open) {
+          header.classList.add('bg-night/95', 'backdrop-blur-md');
+        }
+      });
+      mobileMenu.querySelectorAll('a, button').forEach(function (el) {
+        el.addEventListener('click', function () {
+          mobileMenu.classList.add('hidden');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      const tabForm = document.getElementById('tab-form');
+      const tabCalendly = document.getElementById('tab-calendly');
+      const panelForm = document.getElementById('panel-form');
+      const panelCalendly = document.getElementById('panel-calendly');
+      const calendlyInline = document.getElementById('calendly-inline');
+      let calendlyEmbedReady = false;
+
+      function setTab(mode) {
+        const isForm = mode === 'form';
+        tabForm.setAttribute('aria-selected', isForm ? 'true' : 'false');
+        tabCalendly.setAttribute('aria-selected', isForm ? 'false' : 'true');
+        tabForm.className = isForm
+          ? 'rounded px-4 py-2.5 text-sm font-semibold text-white bg-night transition'
+          : 'rounded px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:text-night';
+        tabCalendly.className = !isForm
+          ? 'rounded px-4 py-2.5 text-sm font-semibold text-white bg-night transition'
+          : 'rounded px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:text-night';
+        panelForm.classList.toggle('hidden', !isForm);
+        panelForm.hidden = !isForm;
+        panelCalendly.classList.toggle('hidden', isForm);
+        panelCalendly.hidden = isForm;
+
+        if (!isForm && !calendlyEmbedReady && typeof Calendly !== 'undefined' && Calendly.initInlineWidget) {
+          calendlyInline.setAttribute('data-url', CALENDLY_URL);
+          Calendly.initInlineWidget({
+            url: CALENDLY_URL,
+            parentElement: calendlyInline,
+          });
+          calendlyEmbedReady = true;
+        }
+      }
+
+      tabForm.addEventListener('click', function () { setTab('form'); });
+      tabCalendly.addEventListener('click', function () { setTab('calendly'); });
+
+      const contactForm = document.getElementById('contact-form');
+      const formSuccess = document.getElementById('form-success');
+
+      contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!contactForm.checkValidity()) {
+          contactForm.reportValidity();
+          return;
+        }
+
+        const prenom = document.getElementById('prenom').value.trim();
+        const nom = document.getElementById('nom').value.trim();
+        const entreprise = document.getElementById('entreprise').value.trim();
+        const telephone = document.getElementById('telephone').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const nbPostes = document.getElementById('nb-postes').value;
+        const option = document.getElementById('option').value;
+        const optionLabel = option === 'sourcing' ? 'Sourcing + Montage' : 'Montage seul';
+
+        const lead = {
+          prenom: prenom,
+          nom: nom,
+          entreprise: entreprise,
+          telephone: telephone,
+          email: email,
+          nbPostes: nbPostes,
+          option: optionLabel,
+          createdAt: new Date().toISOString(),
+        };
+
+        try {
+          localStorage.setItem('optimasse_lead', JSON.stringify(lead));
+        } catch (err) { /* ignore quota / private mode */ }
+
+        formSuccess.classList.remove('hidden');
+
+        openCalendly({
+          name: prenom + ' ' + nom,
+          email: email,
+          customAnswers: {
+            a1: entreprise,
+            a2: telephone,
+            a3: nbPostes + ' poste(s) — ' + optionLabel,
+          },
+        });
+      });
+
+      if (calendlyInline) {
+        calendlyInline.setAttribute('data-url', CALENDLY_URL);
+      }
+
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(function (el) { io.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('is-visible'); });
+      }
+
+      document.getElementById('year').textContent = String(new Date().getFullYear());
+      updateSimulator();
+    })();
+  </script>
+</body>
+</html>
