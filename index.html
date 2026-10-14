@@ -254,34 +254,42 @@
       transition: transform 0.25s ease;
     }
 
-    /* Agenda HubSpot — hauteur adaptée pour éviter le scroll interne */
+    /* Agenda HubSpot — conteneur fluide ; bas recadré pour masquer le branding HubSpot */
     #panel-meeting .meeting-shell {
-      margin-top: 0;
+      margin: 0 auto;
+      max-width: 56rem;
       overflow: hidden;
       border-radius: 0.5rem;
       border: 1px solid #e2e8f0;
-      background: #fff;
-      box-shadow: 0 12px 40px -16px rgba(15, 23, 42, 0.18);
+      background: #ffffff;
+      box-shadow: 0 12px 40px -16px rgba(15, 23, 42, 0.14);
     }
     .meetings-iframe-container {
+      --hs-brand-clip: 58px;
+      position: relative;
       min-width: 0;
       width: 100%;
-      height: 940px;
+      height: clamp(820px, 92vh, 1100px);
       overflow: hidden;
+      background: #ffffff;
     }
     .meetings-iframe-container iframe {
       display: block;
       width: 100%;
-      height: 100%;
-      min-height: 940px;
+      /* Légèrement plus haut que le conteneur : le bandeau "Create your free…" est coupé */
+      height: calc(100% + var(--hs-brand-clip)) !important;
+      min-height: calc(100% + var(--hs-brand-clip));
       border: 0;
+      background: #ffffff;
     }
     @media (max-width: 768px) {
-      .meetings-iframe-container {
-        height: 1080px;
+      #panel-meeting .meeting-shell {
+        max-width: 100%;
+        border-radius: 0.375rem;
       }
-      .meetings-iframe-container iframe {
-        min-height: 1080px;
+      .meetings-iframe-container {
+        --hs-brand-clip: 64px;
+        height: clamp(960px, 95vh, 1200px);
       }
     }
 
@@ -821,7 +829,10 @@
         </div>
 
         <!-- Option A : Embed HubSpot Meetings -->
-        <div id="panel-meeting" role="tabpanel" aria-labelledby="tab-meeting" class="reveal mt-6">
+        <div id="panel-meeting" role="tabpanel" aria-labelledby="tab-meeting" class="reveal mt-8">
+          <p class="mx-auto mb-5 max-w-2xl text-center text-sm text-slate-600 sm:text-base">
+            Choisissez un créneau de 15&nbsp;min — échange découverte par Google Meet.
+          </p>
           <div class="meeting-shell">
             <div
               id="meeting-inline"
@@ -917,6 +928,27 @@
         return MEETING_URL + '?' + params.toString();
       }
 
+      function sizeMeetingFrame(explicitHeight) {
+        if (!meetingInline) return;
+        var frame = document.getElementById('hs-meeting-iframe');
+        var brandClip = window.innerWidth <= 768 ? 64 : 58;
+        var px;
+        if (explicitHeight && !isNaN(Number(explicitHeight))) {
+          px = Math.max(820, Math.ceil(Number(explicitHeight)));
+        } else {
+          var vh = Math.round(window.innerHeight * 0.92);
+          px = Math.max(820, Math.min(1100, vh));
+          if (window.innerWidth <= 768) {
+            px = Math.max(960, Math.min(1200, Math.round(window.innerHeight * 0.95)));
+          }
+        }
+        meetingInline.style.height = px + 'px';
+        if (frame) {
+          frame.style.height = (px + brandClip) + 'px';
+          frame.style.minHeight = (px + brandClip) + 'px';
+        }
+      }
+
       function mountMeetingEmbed(prefill) {
         if (!meetingInline) return;
         var src = buildMeetingSrc(prefill);
@@ -929,10 +961,11 @@
         iframe.setAttribute('allowfullscreen', '');
         iframe.id = 'hs-meeting-iframe';
         meetingInline.appendChild(iframe);
+        sizeMeetingFrame();
         meetingEmbedMounted = true;
       }
 
-      /* Ajuste la hauteur de l'iframe Meetings si HubSpot envoie un resize */
+      /* Ajuste la hauteur si HubSpot envoie un resize */
       window.addEventListener('message', function (event) {
         if (!event.origin || event.origin.indexOf('hubspot') === -1) return;
         var data = event.data;
@@ -941,13 +974,11 @@
         }
         if (!data || typeof data !== 'object') return;
         var height = data.height || (data.payload && data.payload.height) || data.iFrameHeight;
-        if (!height) return;
-        var frame = document.getElementById('hs-meeting-iframe');
-        if (!frame || !meetingInline) return;
-        var px = Math.max(720, Math.ceil(Number(height)));
-        meetingInline.style.height = px + 'px';
-        frame.style.minHeight = px + 'px';
-        frame.style.height = px + 'px';
+        if (height) sizeMeetingFrame(height);
+      });
+
+      window.addEventListener('resize', function () {
+        if (meetingEmbedMounted) sizeMeetingFrame();
       });
 
       function showMeeting(prefill) {
