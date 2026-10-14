@@ -10,7 +10,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
-  <script charset="utf-8" type="text/javascript" src="https://js-eu1.hsforms.net/forms/embed/v2.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -290,153 +289,6 @@
       width: 100%;
       max-width: 40rem;
       margin-inline: auto;
-    }
-
-    /* HubSpot Forms v2 — mode unstyled (css: '') + thème OptiMasse */
-    #hs-form-target,
-    #hs-form-target form,
-    #hs-form-target .hs-form,
-    #hs-form-target .optimasse-hs-form {
-      width: 100% !important;
-      max-width: 100% !important;
-      font-family: 'Outfit', sans-serif !important;
-      color: #0F172A;
-    }
-
-    #hs-form-target fieldset {
-      max-width: 100% !important;
-      border: 0;
-      margin: 0;
-      padding: 0;
-    }
-
-    #hs-form-target .hs-form-field,
-    #hs-form-target .hs-richtext {
-      margin-bottom: 1.25rem;
-    }
-
-    #hs-form-target label:not(.hs-error-msg) {
-      display: block;
-      margin-bottom: 0.375rem;
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #0F172A;
-    }
-
-    #hs-form-target .hs-form-required {
-      color: #10B981;
-    }
-
-    #hs-form-target input.hs-input,
-    #hs-form-target textarea.hs-input,
-    #hs-form-target select.hs-input,
-    #hs-form-target input[type="text"],
-    #hs-form-target input[type="email"],
-    #hs-form-target input[type="tel"],
-    #hs-form-target input[type="number"],
-    #hs-form-target input[type="password"],
-    #hs-form-target textarea,
-    #hs-form-target select {
-      display: block !important;
-      width: 100% !important;
-      max-width: 100% !important;
-      box-sizing: border-box;
-      margin-top: 0.375rem;
-      border-radius: 0.375rem !important;
-      border: 1px solid #cbd5e1 !important;
-      background: #ffffff !important;
-      padding: 0.625rem 0.875rem !important;
-      font-family: 'Outfit', sans-serif !important;
-      font-size: 0.875rem !important;
-      line-height: 1.25rem;
-      color: #0F172A !important;
-      outline: none;
-      box-shadow: none !important;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    #hs-form-target input.hs-input:focus,
-    #hs-form-target textarea.hs-input:focus,
-    #hs-form-target select.hs-input:focus {
-      border-color: #10B981 !important;
-      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3) !important;
-    }
-
-    #hs-form-target .hs-fieldtype-phonenumber input.hs-input,
-    #hs-form-target .hs-input.hs-fieldtype-intl-phone {
-      border-radius: 0.375rem !important;
-    }
-
-    #hs-form-target .inputs-list {
-      list-style: none;
-      margin: 0.5rem 0 0;
-      padding: 0;
-    }
-
-    #hs-form-target .hs-submit {
-      margin-top: 0.25rem;
-    }
-
-    #hs-form-target .hs-button,
-    #hs-form-target input[type="submit"],
-    #hs-form-target .hs-submit input[type="submit"] {
-      display: inline-flex !important;
-      width: 100% !important;
-      align-items: center;
-      justify-content: center;
-      border: 0 !important;
-      border-radius: 0.375rem !important;
-      background: #10B981 !important;
-      background-image: none !important;
-      padding: 0.875rem 1.5rem !important;
-      font-family: 'Outfit', sans-serif !important;
-      font-size: 1rem !important;
-      font-weight: 600 !important;
-      line-height: 1.5rem;
-      color: #ffffff !important;
-      cursor: pointer;
-      box-shadow: none !important;
-      text-shadow: none !important;
-      transition: background-color 0.15s ease;
-    }
-
-    #hs-form-target .hs-button:hover,
-    #hs-form-target input[type="submit"]:hover {
-      background: #059669 !important;
-    }
-
-    #hs-form-target .hs-error-msgs {
-      list-style: none;
-      margin: 0.375rem 0 0;
-      padding: 0;
-      color: #dc2626;
-      font-size: 0.75rem;
-    }
-
-    #hs-form-target .legal-consent-container,
-    #hs-form-target .hs-richtext {
-      font-size: 0.75rem;
-      line-height: 1.45;
-      color: #64748b;
-    }
-
-    #hs-form-target .legal-consent-container a,
-    #hs-form-target .hs-richtext a {
-      color: #10B981;
-    }
-
-    #hs-form-target .submitted-message {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: #047857;
-      text-align: center;
-    }
-
-    #hs-form-target .hubspot-link__container,
-    #hs-form-target .hs-form__virality-link {
-      display: none !important;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -979,10 +831,44 @@
           </div>
         </div>
 
-        <!-- Option B : Formulaire HubSpot v2 (unstyled + CSS OptiMasse) -->
+        <!-- Option B : Formulaire OptiMasse (design site → API HubSpot) -->
         <div id="panel-form" role="tabpanel" aria-labelledby="tab-form" class="reveal mt-6 hidden" hidden>
           <div class="hs-form-wrap rounded-lg border border-slate-200 bg-mist p-5 sm:p-6 md:p-8 shadow-soft">
-            <div id="hs-form-target"></div>
+            <p class="text-sm leading-relaxed text-slate-600">
+              Obtenez votre diagnostic d'économie personnalisé. Remplissez vos coordonnées ci-dessous pour accéder à votre calendrier de réservation.
+            </p>
+            <form id="contact-form" class="mt-6 space-y-5" novalidate>
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label for="prenom" class="block text-sm font-medium text-night">Prénom</label>
+                  <input type="text" id="prenom" name="firstname" autocomplete="given-name"
+                    class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
+                </div>
+                <div>
+                  <label for="nom" class="block text-sm font-medium text-night">Nom</label>
+                  <input type="text" id="nom" name="lastname" autocomplete="family-name"
+                    class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
+                </div>
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-night">E-mail <span class="text-emerald">*</span></label>
+                <input type="email" id="email" name="email" required autocomplete="email"
+                  class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
+              </div>
+              <div>
+                <label for="telephone" class="block text-sm font-medium text-night">Numéro de téléphone portable</label>
+                <input type="tel" id="telephone" name="mobilephone" autocomplete="tel" placeholder="+33 6 00 00 00 00"
+                  class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
+              </div>
+              <button type="submit" id="contact-submit"
+                class="w-full rounded-md bg-emerald px-6 py-3.5 text-base font-semibold text-white transition hover:bg-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60">
+                Obtenir mon diagnostic
+              </button>
+              <p id="form-error" class="hidden text-center text-sm font-medium text-red-600" role="alert"></p>
+              <p id="form-success" class="hidden text-center text-sm font-medium text-emerald-700" role="status">
+                Merci. Choisissez maintenant votre créneau dans le calendrier.
+              </p>
+            </form>
           </div>
         </div>
       </div>
@@ -1345,27 +1231,13 @@
       const tabMeeting = document.getElementById('tab-meeting');
       const panelForm = document.getElementById('panel-form');
       const panelMeeting = document.getElementById('panel-meeting');
-      let hsFormMounted = false;
+      const HS_PORTAL_ID = '149546899';
+      const HS_FORM_ID = 'ef404d18-406d-45a3-85a9-ad5e2f242ff4';
+      const HS_SUBMIT_URL = 'https://api-eu1.hsforms.com/submissions/v3/integration/submit/' + HS_PORTAL_ID + '/' + HS_FORM_ID;
 
-      function mountHsForm() {
-        if (hsFormMounted) return;
-        if (typeof hbspt === 'undefined' || !hbspt.forms || !hbspt.forms.create) {
-          setTimeout(mountHsForm, 120);
-          return;
-        }
-        hsFormMounted = true;
-        hbspt.forms.create({
-          region: 'eu1',
-          portalId: '149546899',
-          formId: 'ef404d18-406d-45a3-85a9-ad5e2f242ff4',
-          target: '#hs-form-target',
-          css: '',
-          cssRequired: '',
-          cssClass: 'optimasse-hs-form',
-          onFormSubmitted: function () {
-            showMeeting();
-          },
-        });
+      function getHubSpotUtk() {
+        var match = document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]+)/);
+        return match ? decodeURIComponent(match[1]) : undefined;
       }
 
       function setTab(mode) {
@@ -1383,12 +1255,80 @@
         panelMeeting.classList.toggle('hidden', isForm);
         panelMeeting.hidden = isForm;
 
-        if (isForm) mountHsForm();
         if (!isForm && !meetingEmbedMounted) mountMeetingEmbed();
       }
 
       tabForm.addEventListener('click', function () { setTab('form'); });
       tabMeeting.addEventListener('click', function () { setTab('meeting'); });
+
+      const contactForm = document.getElementById('contact-form');
+      const contactSubmit = document.getElementById('contact-submit');
+      const formError = document.getElementById('form-error');
+      const formSuccess = document.getElementById('form-success');
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (!contactForm.checkValidity()) {
+            contactForm.reportValidity();
+            return;
+          }
+
+          var prenom = document.getElementById('prenom').value.trim();
+          var nom = document.getElementById('nom').value.trim();
+          var email = document.getElementById('email').value.trim();
+          var telephone = document.getElementById('telephone').value.trim();
+
+          formError.classList.add('hidden');
+          formError.textContent = '';
+          formSuccess.classList.add('hidden');
+          contactSubmit.disabled = true;
+          contactSubmit.textContent = 'Envoi en cours…';
+
+          var fields = [
+            { objectTypeId: '0-1', name: 'email', value: email },
+          ];
+          if (prenom) fields.push({ objectTypeId: '0-1', name: 'firstname', value: prenom });
+          if (nom) fields.push({ objectTypeId: '0-1', name: 'lastname', value: nom });
+          if (telephone) fields.push({ objectTypeId: '0-1', name: 'mobilephone', value: telephone });
+
+          var payload = {
+            fields: fields,
+            context: {
+              pageUri: window.location.href,
+              pageName: document.title,
+            },
+          };
+          var hutk = getHubSpotUtk();
+          if (hutk) payload.context.hutk = hutk;
+
+          fetch(HS_SUBMIT_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          })
+            .then(function (res) {
+              if (!res.ok) throw new Error('submit_failed');
+              return res.text();
+            })
+            .then(function () {
+              formSuccess.classList.remove('hidden');
+              showMeeting({
+                firstname: prenom,
+                lastname: nom,
+                email: email,
+              });
+            })
+            .catch(function () {
+              formError.textContent = 'Une erreur est survenue. Réessayez dans un instant.';
+              formError.classList.remove('hidden');
+            })
+            .finally(function () {
+              contactSubmit.disabled = false;
+              contactSubmit.textContent = 'Obtenir mon diagnostic';
+            });
+        });
+      }
 
       /* Charge le widget dès que la section contact approche (responsive, sans lien externe) */
       if (meetingInline && 'IntersectionObserver' in window) {
