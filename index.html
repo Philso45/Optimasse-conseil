@@ -404,13 +404,13 @@
           </div>
 
           <!-- Résultat principal -->
-          <div class="savings-pulse mt-10 rounded-lg bg-emerald px-6 py-8 text-center text-white sm:px-10">
-            <p class="text-sm font-semibold uppercase tracking-wider text-emerald-100">Votre économie nette estimée</p>
-            <p id="economie-texte" class="mt-3 font-display text-3xl font-bold sm:text-4xl md:text-5xl">—</p>
-            <p id="economie-par-poste" class="mt-3 text-emerald-100">—</p>
-            <p id="economie-bonus" class="mt-2 text-sm font-medium text-white/90">—</p>
+          <div class="savings-pulse mt-10 rounded-lg bg-emerald px-4 py-7 text-center text-white sm:px-10 sm:py-8">
+            <p class="text-xs font-semibold uppercase tracking-wider text-emerald-100 sm:text-sm">Votre économie nette estimée</p>
+            <p id="economie-texte" class="mt-3 break-words font-display text-[1.75rem] font-bold leading-tight tabular-nums sm:text-4xl md:text-5xl">—</p>
+            <p id="economie-par-poste" class="mt-3 text-sm text-emerald-100 sm:text-base">—</p>
+            <p id="economie-bonus" class="mt-2 text-xs font-medium text-white/90 sm:text-sm">—</p>
             <button type="button" data-calendly-open
-              class="mt-6 inline-flex items-center justify-center rounded-md bg-night px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800">
+              class="mt-6 inline-flex w-full items-center justify-center rounded-md bg-night px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800 sm:w-auto sm:px-6">
               Confirmer cette économie avec un conseiller
             </button>
           </div>
@@ -431,7 +431,7 @@
             </button>
 
             <div id="sim-detail" class="mt-6 hidden" hidden>
-              <div class="grid gap-8 lg:grid-cols-2">
+              <div class="grid gap-8 md:grid-cols-2">
                 <div>
                   <label for="duree-preinteg" class="block text-sm font-semibold text-night">
                     Mois sans salaire (prise en main)
@@ -457,7 +457,7 @@
                 </div>
               </div>
 
-              <div class="mt-8 grid gap-4 sm:grid-cols-2">
+              <div class="mt-8 grid gap-4 md:grid-cols-2">
                 <div class="rounded-lg border border-emerald/30 bg-emerald-50/50 p-5">
                   <p class="text-xs font-semibold uppercase tracking-wider text-emerald-700">A — Pré-intégration (prise en main)</p>
                   <p class="mt-2 text-sm leading-relaxed text-slate-600">
@@ -487,8 +487,8 @@
                 </div>
               </div>
 
-              <div class="mt-6 grid gap-6 lg:grid-cols-2">
-                <div class="rounded-lg border border-slate-200 bg-slate-50/80 p-6">
+              <div class="mt-6 grid gap-6 md:grid-cols-2">
+                <div class="rounded-lg border border-slate-200 bg-slate-50/80 p-5 sm:p-6">
                   <h3 id="classique-titre" class="font-display text-lg font-bold text-slate-700">Sans OptiMasse</h3>
                   <dl class="mt-5 space-y-4 text-sm">
                     <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
@@ -506,7 +506,7 @@
                   </dl>
                 </div>
 
-                <div class="rounded-lg border-2 border-emerald/40 bg-white p-6">
+                <div class="rounded-lg border-2 border-emerald/40 bg-white p-5 sm:p-6">
                   <h3 id="opti-titre" class="font-display text-lg font-bold text-night">Avec OptiMasse</h3>
                   <dl class="mt-5 space-y-4 text-sm">
                     <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
@@ -525,7 +525,7 @@
                 </div>
               </div>
 
-              <div class="mt-6 grid gap-3 sm:grid-cols-2" aria-hidden="true">
+              <div class="mt-6 grid gap-3 md:grid-cols-2" aria-hidden="true">
                 <div>
                   <div class="mb-1.5 flex justify-between text-xs font-medium text-slate-500">
                     <span>Sans OptiMasse</span>
@@ -550,6 +550,41 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ========== RÉASSURANCE ========== -->
+    <section id="reassurance" class="border-y border-slate-200/80 bg-white py-10 lg:py-12" aria-label="Garanties OptiMasse">
+      <div class="mx-auto max-w-6xl px-5 lg:px-8">
+        <ul class="grid gap-8 sm:grid-cols-3 sm:gap-6">
+          <li class="reveal flex gap-3 sm:flex-col sm:gap-3 md:flex-row md:items-start">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-emerald/10 text-emerald" aria-hidden="true">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 4.5-2.8 7.8-7 9.5C7.8 18.8 5 15.5 5 11V6l7-3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.5 12.2l1.7 1.7 3.3-3.8"/></svg>
+            </span>
+            <div>
+              <p class="text-sm font-bold text-night">100&nbsp;% Conforme</p>
+              <p class="mt-1 text-sm leading-relaxed text-slate-600">Dispositifs légaux encadrés par le Code du travail et les organismes nationaux pour l'emploi.</p>
+            </div>
+          </li>
+          <li class="reveal flex gap-3 sm:flex-col sm:gap-3 md:flex-row md:items-start" style="transition-delay: 80ms">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-emerald/10 text-emerald" aria-hidden="true">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 3L5 13h6l-1 8 8-10h-6l1-8z"/></svg>
+            </span>
+            <div>
+              <p class="text-sm font-bold text-night">Zéro Gestion Administrative</p>
+              <p class="mt-1 text-sm leading-relaxed text-slate-600">OptiMasse prend en charge la totalité des démarches et du montage des dossiers.</p>
+            </div>
+          </li>
+          <li class="reveal flex gap-3 sm:flex-col sm:gap-3 md:flex-row md:items-start" style="transition-delay: 160ms">
+            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-emerald/10 text-emerald" aria-hidden="true">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 0113.7-5.6M20 12a8 8 0 01-13.7 5.6"/><path stroke-linecap="round" stroke-linejoin="round" d="M18 4v4h-4M6 20v-4h4"/></svg>
+            </span>
+            <div>
+              <p class="text-sm font-bold text-night">Sérénité Garantie</p>
+              <p class="mt-1 text-sm leading-relaxed text-slate-600">En cas d'inadéquation pendant la phase de pré-intégration, remplacement du profil sans aucun surcoût.</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -687,52 +722,43 @@
     <section id="faq" class="section-wash py-20 lg:py-28" aria-labelledby="faq-title">
       <div class="mx-auto max-w-3xl px-5 lg:px-8">
         <h2 id="faq-title" class="font-display text-3xl font-bold tracking-tight text-night md:text-4xl reveal">
-          Questions fréquentes
+          Questions fréquentes des dirigeants
         </h2>
         <div class="mt-10 space-y-3 reveal">
           <details class="group rounded-lg border border-slate-200 bg-white open:shadow-soft">
             <summary class="cursor-pointer list-none px-5 py-4 font-semibold text-night marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4">
-              Comment fonctionne le paiement ?
+              Combien de temps dois-je consacrer à la gestion administrative&nbsp;?
               <span class="text-slate-400 transition group-open:rotate-45 text-xl leading-none">+</span>
             </summary>
             <p class="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600">
-              La pré-intégration seule est à 450&nbsp;€ HT. Le Parcours Optimal est à 900&nbsp;€ HT (450&nbsp;€ à la commande + 450&nbsp;€ à la validation / embauche). Les 450&nbsp;€ HT de pré-intégration sont intégralement déduits si vous passez au parcours d'embauche complet.
+              Aucun. OptiMasse gère l'intégralité du montage administratif, de la qualification des aides et du suivi auprès des organismes.
             </p>
           </details>
           <details class="group rounded-lg border border-slate-200 bg-white open:shadow-soft">
             <summary class="cursor-pointer list-none px-5 py-4 font-semibold text-night marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4">
-              Quelle formule choisir ?
+              Que se passe-t-il si le candidat ne convient pas pendant la pré-intégration&nbsp;?
               <span class="text-slate-400 transition group-open:rotate-45 text-xl leading-none">+</span>
             </summary>
             <p class="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600">
-              La pré-intégration seule convient si vous visez une prise en main sans charge salariale initiale. Le Parcours Optimal (recommandé) ajoute la structuration de l'embauche à coût optimisé sur l'année 1.
+              La période de pré-intégration (Phase A) sert précisément de crash-test opérationnel sans engagement financier. Si le profil ne correspond pas, nous réorientons la mission et vous proposons un remplacement sans aucun frais.
             </p>
           </details>
           <details class="group rounded-lg border border-slate-200 bg-white open:shadow-soft">
             <summary class="cursor-pointer list-none px-5 py-4 font-semibold text-night marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4">
-              Qui forme le candidat pendant la pré-intégration&nbsp;?
+              Mon entreprise est-elle éligible à ces optimisations de masse salariale&nbsp;?
               <span class="text-slate-400 transition group-open:rotate-45 text-xl leading-none">+</span>
             </summary>
             <p class="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600">
-              Un tuteur désigné dans votre entreprise assure la prise en main sur le poste. OptiMasse monte le dispositif, gère l'administratif et optimise le coût d'embauche — pas la formation métier.
+              Oui, toute entreprise de droit privé (TPE, PME, grands groupes) effectuant un recrutement en France peut bénéficier de ces dispositifs légaux d'aides à l'embauche et à la formation.
             </p>
           </details>
           <details class="group rounded-lg border border-slate-200 bg-white open:shadow-soft">
             <summary class="cursor-pointer list-none px-5 py-4 font-semibold text-night marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4">
-              Votre approche est-elle conforme ?
+              Comment se déroule la rémunération d'OptiMasse&nbsp;?
               <span class="text-slate-400 transition group-open:rotate-45 text-xl leading-none">+</span>
             </summary>
             <p class="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600">
-              Oui. Nous nous appuyons uniquement sur des dispositifs légaux, selon l'éligibilité du poste et du profil. Aucun contournement. L'étude préalable vérifie ce qui s'applique réellement à votre situation.
-            </p>
-          </details>
-          <details class="group rounded-lg border border-slate-200 bg-white open:shadow-soft">
-            <summary class="cursor-pointer list-none px-5 py-4 font-semibold text-night marker:content-none [&::-webkit-details-marker]:hidden flex items-center justify-between gap-4">
-              Pour quels secteurs intervenez-vous ?
-              <span class="text-slate-400 transition group-open:rotate-45 text-xl leading-none">+</span>
-            </summary>
-            <p class="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600">
-              Tous types de commerçants et PME qui embauchent régulièrement. Nous sommes particulièrement à l'aise en restauration et CHR — c'est notre domaine d'origine — mais l'approche s'applique à l'ensemble du commerce de proximité.
+              Nos honoraires (450&nbsp;€ HT ou 900&nbsp;€ HT selon la formule choisie) sont facturés uniquement à la confirmation de l'accord d'accompagnement et à la validation administrative de votre dossier. Vous ne prenez aucun risque financier en amont.
             </p>
           </details>
         </div>
