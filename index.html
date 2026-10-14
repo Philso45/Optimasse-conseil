@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://js-eu1.hsforms.net/forms/embed/149546899.js" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -273,6 +274,24 @@
         min-height: 720px;
         height: 85vh;
       }
+    }
+
+    .hs-form-wrap {
+      width: 100%;
+      max-width: 40rem;
+      margin-inline: auto;
+    }
+    .hs-form-frame {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      margin-inline: auto;
+    }
+    .hs-form-frame iframe {
+      display: block;
+      width: 100% !important;
+      max-width: 100%;
+      border: 0;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -817,72 +836,16 @@
           </div>
         </div>
 
-        <!-- Option B : Formulaire puis widget RDV -->
+        <!-- Option B : Formulaire HubSpot natif -->
         <div id="panel-form" role="tabpanel" aria-labelledby="tab-form" class="reveal mt-8 hidden" hidden>
-          <form id="contact-form" class="mx-auto max-w-2xl space-y-5 rounded-lg border border-slate-200 bg-mist p-6 sm:p-8" novalidate>
-            <div class="grid gap-5 sm:grid-cols-2">
-              <div>
-                <label for="prenom" class="block text-sm font-medium text-night">Prénom</label>
-                <input type="text" id="prenom" name="prenom" required autocomplete="given-name"
-                  class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
-              </div>
-              <div>
-                <label for="nom" class="block text-sm font-medium text-night">Nom</label>
-                <input type="text" id="nom" name="nom" required autocomplete="family-name"
-                  class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
-              </div>
-            </div>
-            <div>
-              <label for="entreprise" class="block text-sm font-medium text-night">Nom de l'établissement / Entreprise</label>
-              <input type="text" id="entreprise" name="entreprise" required autocomplete="organization"
-                class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
-            </div>
-            <div class="grid gap-5 sm:grid-cols-2">
-              <div>
-                <label for="telephone" class="block text-sm font-medium text-night">Téléphone</label>
-                <input type="tel" id="telephone" name="telephone" required autocomplete="tel"
-                  class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
-              </div>
-              <div>
-                <label for="email" class="block text-sm font-medium text-night">Email</label>
-                <input type="email" id="email" name="email" required autocomplete="email"
-                  class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
-              </div>
-            </div>
-            <div class="grid gap-5 sm:grid-cols-2">
-              <div>
-                <label for="nb-postes" class="block text-sm font-medium text-night">Nombre de postes à pourvoir</label>
-                <select id="nb-postes" name="nb_postes" required
-                  class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30">
-                  <option value="">Sélectionner</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5+</option>
-                </select>
-              </div>
-              <div>
-                <label for="option" class="block text-sm font-medium text-night">Option souhaitée</label>
-                <select id="option" name="option" required
-                  class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30">
-                  <option value="">Sélectionner</option>
-                  <option value="preinteg">Pré-intégration seule</option>
-                  <option value="parcours">Parcours Optimal</option>
-                </select>
-              </div>
-            </div>
-            <button type="submit"
-              class="w-full rounded-md bg-emerald px-6 py-3.5 text-base font-semibold text-white transition hover:bg-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald focus-visible:ring-offset-2">
-              Obtenir mon diagnostic d'économie offert
-            </button>
-            <p class="text-center text-xs text-slate-500">
-              Après validation, le calendrier de rendez-vous s'affiche pour choisir votre créneau.
-            </p>
-            <p id="form-success" class="hidden text-center text-sm font-medium text-emerald-700" role="status">
-              Merci. Choisissez maintenant votre créneau dans le calendrier ci-dessous.
-            </p>
-          </form>
+          <div class="hs-form-wrap rounded-lg border border-slate-200 bg-mist p-4 sm:p-6 md:p-8 shadow-soft">
+            <div
+              class="hs-form-frame"
+              data-region="eu1"
+              data-form-id="ef404d18-406d-45a3-85a9-ad5e2f242ff4"
+              data-portal-id="149546899"
+            ></div>
+          </div>
         </div>
       </div>
     </section>
@@ -1261,49 +1224,6 @@
       } else if (!meetingEmbedMounted) {
         mountMeetingEmbed();
       }
-
-      const contactForm = document.getElementById('contact-form');
-      const formSuccess = document.getElementById('form-success');
-
-      contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        if (!contactForm.checkValidity()) {
-          contactForm.reportValidity();
-          return;
-        }
-
-        const prenom = document.getElementById('prenom').value.trim();
-        const nom = document.getElementById('nom').value.trim();
-        const entreprise = document.getElementById('entreprise').value.trim();
-        const telephone = document.getElementById('telephone').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const nbPostes = document.getElementById('nb-postes').value;
-        const option = document.getElementById('option').value;
-        const optionLabel = option === 'parcours' ? 'Parcours Optimal' : 'Pré-intégration seule';
-
-        const lead = {
-          prenom: prenom,
-          nom: nom,
-          entreprise: entreprise,
-          telephone: telephone,
-          email: email,
-          nbPostes: nbPostes,
-          option: optionLabel,
-          createdAt: new Date().toISOString(),
-        };
-
-        try {
-          localStorage.setItem('optimasse_lead', JSON.stringify(lead));
-        } catch (err) { /* ignore quota / private mode */ }
-
-        formSuccess.classList.remove('hidden');
-
-        showMeeting({
-          firstname: prenom,
-          lastname: nom,
-          email: email,
-        });
-      });
 
       const reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window) {
