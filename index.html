@@ -864,7 +864,7 @@
                   class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
               </div>
               <div>
-                <label for="telephone" class="block text-sm font-medium text-night">Numéro de téléphone portable <span class="text-emerald">*</span></label>
+                <label for="telephone" class="block text-sm font-medium text-night">Numéro de téléphone <span class="text-emerald">*</span></label>
                 <input type="tel" id="telephone" name="phone" required autocomplete="tel" inputmode="tel" placeholder="06 00 00 00 00"
                   class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
               </div>
@@ -1355,21 +1355,12 @@
           if (prenom) baseFields.push({ objectTypeId: '0-1', name: 'firstname', value: prenom });
           if (nom) baseFields.push({ objectTypeId: '0-1', name: 'lastname', value: nom });
 
-          /* HubSpot : on envoie phone + mobilephone (selon le champ présent sur le formulaire) */
-          var phoneFieldsBoth = baseFields.concat([
-            { objectTypeId: '0-1', name: 'phone', value: telephone },
-            { objectTypeId: '0-1', name: 'mobilephone', value: telephone },
-          ]);
-          var phoneFieldsMobile = baseFields.concat([
-            { objectTypeId: '0-1', name: 'mobilephone', value: telephone },
-          ]);
-          var phoneFieldsPhone = baseFields.concat([
+          /* Champ HubSpot « Numéro de téléphone » → propriété phone */
+          var fields = baseFields.concat([
             { objectTypeId: '0-1', name: 'phone', value: telephone },
           ]);
 
-          submitHubSpotFields(phoneFieldsBoth)
-            .catch(function () { return submitHubSpotFields(phoneFieldsMobile); })
-            .catch(function () { return submitHubSpotFields(phoneFieldsPhone); })
+          submitHubSpotFields(fields)
             .then(function () {
               formSuccess.classList.remove('hidden');
               showMeeting({
