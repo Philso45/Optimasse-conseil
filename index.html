@@ -369,197 +369,187 @@
     <!-- ========== SIMULATEUR ========== -->
     <section id="simulateur" class="section-wash py-20 lg:py-28" aria-labelledby="sim-title">
       <div class="mx-auto max-w-6xl px-5 lg:px-8">
-        <div class="max-w-2xl reveal">
+        <div class="max-w-xl reveal">
           <h2 id="sim-title" class="font-display text-3xl font-bold tracking-tight text-night md:text-4xl">
-            Comparez vos coûts : Embauche classique vs. Solution OptiMasse
+            Combien pouvez-vous économiser&nbsp;?
           </h2>
           <p class="mt-4 text-lg text-slate-600">
-            Estimez vos économies en 2 phases — 0&nbsp;€ de salaire en pré-intégration, puis contrat à coût optimisé — selon le salaire et le nombre de postes.
+            Ajustez le salaire et le nombre de postes. On estime votre économie nette sur la pré-intégration + 12 mois de contrat optimisé.
           </p>
         </div>
 
-        <!-- Controls -->
         <div class="mt-12 reveal rounded-lg border border-slate-200/80 bg-white p-6 shadow-soft sm:p-8">
-          <div class="grid gap-8 lg:grid-cols-3">
+          <!-- Inputs essentiels -->
+          <div class="grid gap-8 sm:grid-cols-2">
             <div>
               <label for="salaire" class="block text-sm font-semibold text-night">
-                Salaire brut mensuel du poste
+                Salaire brut mensuel (100&nbsp;% SMIC)
               </label>
               <div class="mt-4 flex items-center gap-4">
-                <input type="range" id="salaire" min="1867.02" max="4000" step="50" value="1867.02" class="w-full" />
-                <span id="salaire-value" class="flex h-11 min-w-[6.5rem] items-center justify-center rounded-md bg-night px-3 font-display text-sm font-bold text-white tabular-nums sm:text-base">1&nbsp;867,02&nbsp;€</span>
+                <input type="range" id="salaire" min="1800" max="4000" step="50" value="1800" class="w-full" />
+                <span id="salaire-value" class="flex h-11 min-w-[6.5rem] items-center justify-center rounded-md bg-night px-3 font-display text-sm font-bold text-white tabular-nums sm:text-base">1&nbsp;800&nbsp;€</span>
               </div>
-              <p class="mt-2 text-sm text-slate-500">De 1&nbsp;867,02&nbsp;€ (SMIC brut 2026) à 4&nbsp;000&nbsp;€ brut / mois</p>
+              <p class="mt-2 text-sm text-slate-500">De 1&nbsp;800&nbsp;€ (SMIC) à 4&nbsp;000&nbsp;€</p>
             </div>
             <div>
               <label for="postes" class="block text-sm font-semibold text-night">
                 Nombre de postes
               </label>
               <div class="mt-4 flex items-center gap-4">
-                <input type="range" id="postes" min="1" max="10" value="2" class="w-full" />
-                <span id="postes-value" class="flex h-11 min-w-[3rem] items-center justify-center rounded-md bg-night px-3 font-display text-lg font-bold text-white">2</span>
+                <input type="range" id="postes" min="1" max="10" value="1" class="w-full" />
+                <span id="postes-value" class="flex h-11 min-w-[3rem] items-center justify-center rounded-md bg-night px-3 font-display text-lg font-bold text-white">1</span>
               </div>
-              <p class="mt-2 text-sm text-slate-500"><span id="postes-label">2 postes</span></p>
-            </div>
-            <div>
-              <label for="duree-preinteg" class="block text-sm font-semibold text-night">
-                Durée de pré-intégration
-              </label>
-              <div class="mt-4 flex items-center gap-4">
-                <input type="range" id="duree-preinteg" min="1" max="3" step="1" value="1" class="w-full" />
-                <span id="duree-preinteg-value" class="flex h-11 min-w-[4.5rem] items-center justify-center rounded-md bg-night px-3 font-display text-sm font-bold text-white">1 mois</span>
-              </div>
-              <p class="mt-2 text-sm text-slate-500">De 1 à 3 mois — 0&nbsp;€ de salaire pendant cette période</p>
+              <p class="mt-2 text-sm text-slate-500"><span id="postes-label">1 poste</span></p>
             </div>
           </div>
 
-          <div class="mt-6">
-            <button type="button" id="parcours-toggle" role="switch" aria-checked="true"
-              class="group flex w-full items-center gap-4 rounded-md border border-slate-200 bg-mist px-4 py-3 text-left transition hover:border-slate-300 sm:w-auto">
-              <span class="toggle-track relative inline-flex h-7 w-12 shrink-0 items-center rounded-full bg-emerald" id="toggle-track">
-                <span class="toggle-knob absolute left-0.5 h-6 w-6 rounded-full bg-white shadow" id="toggle-knob" style="transform: translateX(1.25rem)"></span>
-              </span>
-              <span class="text-sm font-medium text-night">
-                Parcours Optimal<br />
-                <span class="font-normal text-slate-500" id="parcours-hint">900&nbsp;€ HT / poste — pré-intégration + embauche optimisée. Les 450&nbsp;€ HT de pré-intégration sont déductibles du parcours complet.</span>
-              </span>
-            </button>
-          </div>
-
-          <p class="mt-6 text-xs leading-relaxed text-slate-500">
-            Simulation indicative selon éligibilité du poste et du profil. Le diagnostic confirme le potentiel d'économie applicable à votre situation.
-          </p>
-
-          <!-- Phases d'économie -->
-          <div class="mt-10 grid gap-4 sm:grid-cols-2">
-            <div class="rounded-lg border border-emerald/30 bg-emerald-50/50 p-5">
-              <p class="text-xs font-semibold uppercase tracking-wider text-emerald-700">
-                A — Pré-intégration / Prise en main
-              </p>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                0&nbsp;€ de salaire pendant la prise en main par votre tuteur interne (1 à 3 mois selon le poste).
-              </p>
-              <div class="mt-4 rounded-md border border-emerald/40 bg-white px-4 py-3">
-                <p class="text-xs font-semibold uppercase tracking-wide text-emerald-700">Économie pendant la pré-intégration</p>
-                <p id="eco-min-mois1" class="mt-1 font-display text-2xl font-bold text-night">—</p>
-              </div>
-            </div>
-            <div id="phase-b-card" class="rounded-lg border border-emerald/30 bg-emerald-50/50 p-5 transition-opacity duration-300">
-              <p class="text-xs font-semibold uppercase tracking-wider text-emerald-700">B — Contrat à coût optimisé (1<sup>re</sup> année)</p>
-              <p class="mt-1 text-sm text-slate-600">Optimisation des charges et aides sur la première année</p>
-              <p id="gain-phase2" class="mt-3 font-display text-2xl font-bold text-night">—</p>
-            </div>
-          </div>
-
-          <!-- Bonus tutorat -->
-          <div class="mt-4 flex flex-col gap-3 rounded-lg border border-emerald/40 bg-emerald-50/80 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
-            <div class="flex gap-3">
-              <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-emerald text-sm text-white" aria-hidden="true">+</span>
-              <div>
-                <p class="text-xs font-bold uppercase tracking-wider text-emerald-800">Bonus accompagnement</p>
-                <p class="mt-1 text-sm leading-relaxed text-slate-700">
-                  <span class="font-semibold text-night">Bonus tutorat :</span> indemnisation du temps d'accompagnement de votre tuteur interne (jusqu'à 200&nbsp;€ / mois versés à l'entreprise).
-                </p>
-              </div>
-            </div>
-            <div class="shrink-0 rounded-md bg-white px-4 py-2.5 text-left shadow-sm sm:text-right">
-              <p class="text-xs font-semibold uppercase tracking-wide text-emerald-700">Bonus net à percevoir</p>
-              <p id="bonus-tutorat" class="font-display text-lg font-bold text-night">—</p>
-              <p class="text-xs text-slate-500">selon durée · jusqu'à 600&nbsp;€ / poste</p>
-            </div>
-          </div>
-
-          <!-- Comparison coûts -->
-          <div class="mt-6 grid gap-6 lg:grid-cols-2">
-            <div class="rounded-lg border border-slate-200 bg-slate-50/80 p-6">
-              <h3 class="font-display text-lg font-bold text-slate-700">Coût classique (1 an)</h3>
-              <p class="mt-1 text-sm text-slate-500">Masse salariale chargée + temps / coût d'intégration estimé</p>
-              <dl class="mt-6 space-y-4 text-sm">
-                <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
-                  <dt class="text-slate-600">Masse mensuelle chargée × 12<br /><span class="font-normal text-slate-500">brut × 1,25</span></dt>
-                  <dd id="classique-masse-an" class="shrink-0 font-semibold text-night">—</dd>
-                </div>
-                <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
-                  <dt class="text-slate-600" id="frais-recrutement-label">Temps / coût d'intégration (estimé)</dt>
-                  <dd id="classique-frais" class="shrink-0 font-semibold text-night">—</dd>
-                </div>
-                <div class="flex justify-between gap-4 pt-1">
-                  <dt class="font-semibold text-night">Total classique</dt>
-                  <dd id="classique-total" class="font-display text-lg font-bold text-night">—</dd>
-                </div>
-              </dl>
-            </div>
-
-            <div class="rounded-lg border-2 border-emerald/40 bg-white p-6">
-              <h3 class="font-display text-lg font-bold text-night">Solution OptiMasse (1 an)</h3>
-              <p class="mt-1 text-sm text-emerald-700">Coût optimisé + honoraires</p>
-              <dl class="mt-6 space-y-4 text-sm">
-                <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
-                  <dt class="text-slate-600">Masse salariale optimisée (12 mois)<br /><span class="font-normal text-slate-500">classique − gains phases A &amp; B</span></dt>
-                  <dd id="opti-masse-an" class="shrink-0 font-semibold text-night">—</dd>
-                </div>
-                <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
-                  <dt class="text-slate-600">Honoraires OptiMasse<br /><span id="formule-label" class="font-normal text-slate-500">Parcours Optimal — 900 € HT / poste</span></dt>
-                  <dd id="honoraires" class="shrink-0 font-semibold text-night">—</dd>
-                </div>
-                <div class="flex justify-between gap-4 pt-1">
-                  <dt class="font-semibold text-night">Total avec OptiMasse</dt>
-                  <dd id="opti-total" class="font-display text-lg font-bold text-emerald">—</dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-
-          <!-- Barre visuelle -->
-          <div class="mt-8 grid gap-3 sm:grid-cols-2" aria-hidden="true">
-            <div>
-              <div class="mb-1.5 flex justify-between text-xs font-medium text-slate-500">
-                <span>Coût classique</span>
-                <span id="bar-classique-label">—</span>
-              </div>
-              <div class="h-3 overflow-hidden rounded-full bg-slate-100">
-                <div id="bar-classique" class="h-full rounded-full bg-slate-400 transition-all duration-500" style="width:100%"></div>
-              </div>
-            </div>
-            <div>
-              <div class="mb-1.5 flex justify-between text-xs font-medium text-emerald-700">
-                <span>Avec OptiMasse</span>
-                <span id="bar-opti-label">—</span>
-              </div>
-              <div class="h-3 overflow-hidden rounded-full bg-emerald-50">
-                <div id="bar-opti" class="h-full rounded-full bg-emerald transition-all duration-500" style="width:70%"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Savings highlight -->
-          <div class="savings-pulse mt-8 rounded-lg bg-emerald px-6 py-8 text-center text-white sm:px-10">
-            <p class="text-sm font-semibold uppercase tracking-wider text-emerald-100">Économie nette cumulée</p>
-            <p id="economie-texte" class="mt-3 font-display text-2xl font-bold sm:text-3xl md:text-4xl">—</p>
-            <p id="economie-detail" class="mt-3 text-sm leading-relaxed text-emerald-100">—</p>
-            <p id="economie-bonus" class="mt-2 text-sm font-semibold text-white">—</p>
-            <p id="economie-par-poste" class="mt-2 text-emerald-100">—</p>
+          <!-- Résultat principal -->
+          <div class="savings-pulse mt-10 rounded-lg bg-emerald px-6 py-8 text-center text-white sm:px-10">
+            <p class="text-sm font-semibold uppercase tracking-wider text-emerald-100">Votre économie nette estimée</p>
+            <p id="economie-texte" class="mt-3 font-display text-3xl font-bold sm:text-4xl md:text-5xl">—</p>
+            <p id="economie-par-poste" class="mt-3 text-emerald-100">—</p>
+            <p id="economie-bonus" class="mt-2 text-sm font-medium text-white/90">—</p>
             <button type="button" data-calendly-open
               class="mt-6 inline-flex items-center justify-center rounded-md bg-night px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800">
-              Bloquer cette économie avec un conseiller
+              Confirmer cette économie avec un conseiller
             </button>
           </div>
-        </div>
 
-        <p class="reveal mt-6 text-xs leading-relaxed text-slate-500">
-          <span class="font-semibold text-slate-600">Note :</span> La pré-intégration dure de 1 à 3 mois selon le poste. Pendant cette période, vous ne versez ni salaire ni cotisations (0&nbsp;€). Ensuite, le parcours Optimal structure un contrat à coût optimisé sur la première année.
-        </p>
-
-        <!-- Preuve chiffrée -->
-        <aside class="reveal mt-10 border-l-4 border-emerald bg-white px-6 py-6 shadow-soft sm:px-8" aria-labelledby="preuve-title">
-          <p class="text-xs font-semibold uppercase tracking-wider text-emerald-700">Exemple type — commerce de proximité</p>
-          <h3 id="preuve-title" class="mt-2 font-display text-xl font-bold text-night sm:text-2xl">
-            Salaire 2&nbsp;000&nbsp;€ brut · 2 postes · Parcours Optimal
-          </h3>
-          <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 sm:text-base">
-            Le parcours en 2 phases combine pré-intégration (0&nbsp;€ de salaire) puis contrat à coût optimisé. L'économie nette affichée = gain phase&nbsp;A + gain phase&nbsp;B − honoraires OptiMasse.
+          <p class="mt-4 text-center text-xs text-slate-500">
+            Estimation indicative. Un diagnostic confirme le potentiel réel selon votre poste et votre profil.
           </p>
-        </aside>
+
+          <!-- Détail collapsible -->
+          <div class="mt-8">
+            <button type="button" id="detail-toggle"
+              class="group flex w-full items-center justify-center gap-3 rounded-md border-2 border-night bg-night px-5 py-4 text-center transition hover:bg-slate-800 sm:justify-between sm:text-left"
+              aria-expanded="false" aria-controls="sim-detail">
+              <span id="detail-toggle-label" class="text-base font-semibold text-white sm:text-lg">Voir le détail du calcul</span>
+              <span id="detail-chevron" class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-white/10 text-white transition group-hover:bg-white/15" aria-hidden="true">
+                <svg class="h-5 w-5 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+              </span>
+            </button>
+
+            <div id="sim-detail" class="mt-6 hidden" hidden>
+              <div class="grid gap-8 lg:grid-cols-2">
+                <div>
+                  <label for="duree-preinteg" class="block text-sm font-semibold text-night">
+                    Mois sans salaire (prise en main)
+                  </label>
+                  <div class="mt-3 flex items-center gap-4">
+                    <input type="range" id="duree-preinteg" min="1" max="3" step="1" value="1" class="w-full" />
+                    <span id="duree-preinteg-value" class="flex h-11 min-w-[4.5rem] items-center justify-center rounded-md bg-night px-3 font-display text-sm font-bold text-white">1 mois</span>
+                  </div>
+                  <p class="mt-2 text-sm text-slate-500">1 à 3 mois — vous ne versez ni salaire ni charges</p>
+                </div>
+                <div>
+                  <p class="block text-sm font-semibold text-night">Formule</p>
+                  <button type="button" id="parcours-toggle" role="switch" aria-checked="true"
+                    class="mt-3 group flex w-full items-center gap-4 rounded-md border border-slate-200 bg-mist px-4 py-3 text-left transition hover:border-slate-300">
+                    <span class="toggle-track relative inline-flex h-7 w-12 shrink-0 items-center rounded-full bg-emerald" id="toggle-track">
+                      <span class="toggle-knob absolute left-0.5 h-6 w-6 rounded-full bg-white shadow" id="toggle-knob" style="transform: translateX(1.25rem)"></span>
+                    </span>
+                    <span class="text-sm font-medium text-night">
+                      <span id="parcours-title">Parcours Optimal</span><br />
+                      <span class="font-normal text-slate-500" id="parcours-hint">Pré-intégration + contrat à coût optimisé</span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                <div class="rounded-lg border border-emerald/30 bg-emerald-50/50 p-5">
+                  <p class="text-xs font-semibold uppercase tracking-wider text-emerald-700">A — Pré-intégration (prise en main)</p>
+                  <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                    0&nbsp;€ de masse salariale pendant N mois.
+                  </p>
+                  <p id="eco-min-mois1" class="mt-4 font-display text-2xl font-bold text-night">—</p>
+                  <p class="mt-1 text-xs text-slate-500">salaire SMIC chargé en 2026</p>
+                </div>
+                <div id="phase-b-card" class="rounded-lg border border-emerald/30 bg-emerald-50/50 p-5 transition-opacity duration-300">
+                  <p class="text-xs font-semibold uppercase tracking-wider text-emerald-700">B — Contrat à coût optimisé (12 mois)</p>
+                  <p id="phase-b-desc" class="mt-2 text-sm text-slate-600">Charges réduites + Aides d'État intégrées</p>
+                  <p id="gain-phase2" class="mt-4 font-display text-2xl font-bold text-night">—</p>
+                  <p id="phase-b-hint" class="mt-1 text-xs text-slate-500">économie Phase B vs embauche classique</p>
+                </div>
+              </div>
+
+              <div class="mt-4 flex flex-col gap-3 rounded-lg border border-emerald/40 bg-emerald-50/80 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-wider text-emerald-800">Bonus tutorat</p>
+                  <p class="mt-1 text-sm text-slate-700">
+                    Indemnisation du temps de votre tuteur interne (jusqu'à 200&nbsp;€ / mois).
+                  </p>
+                </div>
+                <div class="shrink-0 rounded-md bg-white px-4 py-2.5 text-left shadow-sm sm:text-right">
+                  <p class="text-xs font-semibold uppercase tracking-wide text-emerald-700">À percevoir</p>
+                  <p id="bonus-tutorat" class="font-display text-lg font-bold text-night">—</p>
+                </div>
+              </div>
+
+              <div class="mt-6 grid gap-6 lg:grid-cols-2">
+                <div class="rounded-lg border border-slate-200 bg-slate-50/80 p-6">
+                  <h3 id="classique-titre" class="font-display text-lg font-bold text-slate-700">Sans OptiMasse</h3>
+                  <dl class="mt-5 space-y-4 text-sm">
+                    <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
+                      <dt class="text-slate-600">Coût mensuel de référence</dt>
+                      <dd id="classique-mensuel" class="shrink-0 font-semibold text-night">—</dd>
+                    </div>
+                    <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
+                      <dt class="text-slate-600" id="classique-periode-label">Période (N + 12 mois)</dt>
+                      <dd id="classique-periode" class="shrink-0 font-semibold text-night">—</dd>
+                    </div>
+                    <div class="flex justify-between gap-4 pt-1">
+                      <dt class="font-semibold text-night">Total embauche classique</dt>
+                      <dd id="classique-total" class="font-display text-lg font-bold text-night">—</dd>
+                    </div>
+                  </dl>
+                </div>
+
+                <div class="rounded-lg border-2 border-emerald/40 bg-white p-6">
+                  <h3 id="opti-titre" class="font-display text-lg font-bold text-night">Avec OptiMasse</h3>
+                  <dl class="mt-5 space-y-4 text-sm">
+                    <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
+                      <dt class="text-slate-600">Masse salariale<br /><span id="masse-opti-label" class="font-normal text-slate-500">pré-intégration 0&nbsp;€ + contrat optimisé</span></dt>
+                      <dd id="opti-masse-an" class="shrink-0 font-semibold text-night">—</dd>
+                    </div>
+                    <div class="flex justify-between gap-4 border-b border-slate-200/80 pb-3">
+                      <dt class="text-slate-600">Honoraires<br /><span id="formule-label" class="font-normal text-slate-500">Parcours Optimal — 900 € HT / poste</span></dt>
+                      <dd id="honoraires" class="shrink-0 font-semibold text-night">—</dd>
+                    </div>
+                    <div class="flex justify-between gap-4 pt-1">
+                      <dt class="font-semibold text-night">Total</dt>
+                      <dd id="opti-total" class="font-display text-lg font-bold text-emerald">—</dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+
+              <div class="mt-6 grid gap-3 sm:grid-cols-2" aria-hidden="true">
+                <div>
+                  <div class="mb-1.5 flex justify-between text-xs font-medium text-slate-500">
+                    <span>Sans OptiMasse</span>
+                    <span id="bar-classique-label">—</span>
+                  </div>
+                  <div class="h-3 overflow-hidden rounded-full bg-slate-100">
+                    <div id="bar-classique" class="h-full rounded-full bg-slate-400 transition-all duration-500" style="width:100%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="mb-1.5 flex justify-between text-xs font-medium text-emerald-700">
+                    <span>Avec OptiMasse</span>
+                    <span id="bar-opti-label">—</span>
+                  </div>
+                  <div class="h-3 overflow-hidden rounded-full bg-emerald-50">
+                    <div id="bar-opti" class="h-full rounded-full bg-emerald transition-all duration-500" style="width:70%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <p id="economie-detail" class="mt-6 text-sm text-slate-500">—</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -911,20 +901,26 @@
       const dureePreIntegInput = document.getElementById('duree-preinteg');
       const dureePreIntegValue = document.getElementById('duree-preinteg-value');
       const parcoursToggle = document.getElementById('parcours-toggle');
+      const parcoursTitle = document.getElementById('parcours-title');
       const parcoursHint = document.getElementById('parcours-hint');
       const toggleTrack = document.getElementById('toggle-track');
       const toggleKnob = document.getElementById('toggle-knob');
       const phaseBCard = document.getElementById('phase-b-card');
+      const phaseBDesc = document.getElementById('phase-b-desc');
+      const phaseBHint = document.getElementById('phase-b-hint');
       const gainPhase1El = document.getElementById('eco-min-mois1');
       const gainPhase2El = document.getElementById('gain-phase2');
-      const classiqueMasseAn = document.getElementById('classique-masse-an');
-      const classiqueFrais = document.getElementById('classique-frais');
-      const fraisRecrutementLabel = document.getElementById('frais-recrutement-label');
+      const classiqueMensuel = document.getElementById('classique-mensuel');
+      const classiquePeriode = document.getElementById('classique-periode');
+      const classiquePeriodeLabel = document.getElementById('classique-periode-label');
       const formuleLabel = document.getElementById('formule-label');
+      const masseOptiLabel = document.getElementById('masse-opti-label');
       const honorairesEl = document.getElementById('honoraires');
       const optiMasseAn = document.getElementById('opti-masse-an');
       const optiTotal = document.getElementById('opti-total');
       const classiqueTotal = document.getElementById('classique-total');
+      const classiqueTitre = document.getElementById('classique-titre');
+      const optiTitre = document.getElementById('opti-titre');
       const economieTexte = document.getElementById('economie-texte');
       const economieDetail = document.getElementById('economie-detail');
       const economieBonus = document.getElementById('economie-bonus');
@@ -935,11 +931,19 @@
       const barClassiqueLabel = document.getElementById('bar-classique-label');
       const barOptiLabel = document.getElementById('bar-opti-label');
       const postesDyn = document.querySelectorAll('.postes-dyn');
+      const detailToggle = document.getElementById('detail-toggle');
+      const simDetail = document.getElementById('sim-detail');
+      const detailChevron = document.getElementById('detail-chevron');
 
       let parcoursOptimal = true;
       let displayedSavings = 0;
 
-      const SMIC_BRUT_2026 = 1867.02;
+      const SMIC_BRUT = 1800;
+      const COUT_MENSUEL_REF_SMIC = 2000;
+      const AIDE_ETAT_MENSUELLE = 375;
+      const MOIS_PHASE_B = 12;
+      const HONORAIRES_OPTIMAL = 900;
+      const HONORAIRES_PREINTEG = 450;
 
       function formatEuro(n) {
         return new Intl.NumberFormat('fr-FR', {
@@ -961,7 +965,7 @@
 
       function getSalaireBrut() {
         const raw = parseFloat(salaireInput.value);
-        if (!Number.isFinite(raw) || raw < SMIC_BRUT_2026) return SMIC_BRUT_2026;
+        if (!Number.isFinite(raw) || raw < SMIC_BRUT) return SMIC_BRUT;
         if (raw > 4000) return 4000;
         return raw;
       }
@@ -980,30 +984,37 @@
       function updateSimulator() {
         const salaireBrut = getSalaireBrut();
         const nbPostes = parseInt(postesInput.value, 10);
-        const dureePreInteg = parseInt(dureePreIntegInput.value, 10);
-        const masseMensuelleChargeeParPoste = salaireBrut * 1.25;
-        const coutRecrutementClassique = 1000;
-        const totalClassiqueVal = ((masseMensuelleChargeeParPoste * 12) + coutRecrutementClassique) * nbPostes;
+        const nPreinteg = parseInt(dureePreIntegInput.value, 10);
+        const moisTotal = nPreinteg + MOIS_PHASE_B;
 
-        // A — absence de salaire pendant pré-intégration
-        const gainA = masseMensuelleChargeeParPoste * dureePreInteg * nbPostes;
+        // Coût mensuel de référence (2 000 € au SMIC, proportionnel au salaire)
+        const coutMensuelClassique = (salaireBrut / SMIC_BRUT) * COUT_MENSUEL_REF_SMIC;
+        const totalClassiqueVal = coutMensuelClassique * moisTotal * nbPostes;
 
-        // B — optimisation 1ère année (only if parcoursOptimal)
-        const gainB = parcoursOptimal ? (2000 + (salaireBrut * 0.15 * 11)) * nbPostes : 0;
+        // Phase A — Pré-intégration (prise en main) : 0 € pendant N mois
+        const gainA = coutMensuelClassique * nPreinteg * nbPostes;
 
-        const honorairesUnitaire = parcoursOptimal ? 900 : 450;
+        // Phase B — Contrat à coût optimisé : référence − aides d'État (375 € / mois)
+        const resteChargeMensuelB = coutMensuelClassique - AIDE_ETAT_MENSUELLE;
+        const massePhaseB = resteChargeMensuelB * MOIS_PHASE_B * nbPostes;
+        const coutClassiquePhaseB = coutMensuelClassique * MOIS_PHASE_B * nbPostes;
+        const gainB = parcoursOptimal ? (coutClassiquePhaseB - massePhaseB) : 0;
+
+        const honorairesUnitaire = parcoursOptimal ? HONORAIRES_OPTIMAL : HONORAIRES_PREINTEG;
         const totalHonorairesOptiMasse = honorairesUnitaire * nbPostes;
 
-        // Bonus tutorat : jusqu'à 200 € / mois sur 1 à 3 mois (plafond par poste)
-        const BONUS_TUTORAT_MENSUEL = 200;
-        const bonusTutoratMin = BONUS_TUTORAT_MENSUEL;
-        const bonusTutoratMax = BONUS_TUTORAT_MENSUEL * 3;
+        // Masse : Phase A (0) + Phase B optimisée, ou Phase A + contrat classique 12 mois
+        const masseSalarialeOptimisee = parcoursOptimal
+          ? massePhaseB
+          : coutMensuelClassique * MOIS_PHASE_B * nbPostes;
 
-        const economiesGenerees = gainA + gainB;
-        const masseSalarialeOptimisee = totalClassiqueVal - economiesGenerees;
         const totalOptiMasse = masseSalarialeOptimisee + totalHonorairesOptiMasse;
         const economieNetteCumulee = totalClassiqueVal - totalOptiMasse;
         const economieParPosteVal = economieNetteCumulee / nbPostes;
+
+        const BONUS_TUTORAT_MENSUEL = 200;
+        const bonusTutoratMin = BONUS_TUTORAT_MENSUEL * nbPostes;
+        const bonusTutoratMax = BONUS_TUTORAT_MENSUEL * 3 * nbPostes;
 
         const totalClassiqueArrondi = Math.round(totalClassiqueVal);
         const totalOptiArrondi = Math.round(totalOptiMasse);
@@ -1012,28 +1023,55 @@
         salaireValue.textContent = formatSalaire(salaireBrut);
         postesValue.textContent = String(nbPostes);
         postesLabel.textContent = nbPostes === 1 ? '1 poste' : nbPostes + ' postes';
-        dureePreIntegValue.textContent = dureePreInteg === 1 ? '1 mois' : dureePreInteg + ' mois';
+        dureePreIntegValue.textContent = nPreinteg === 1 ? '1 mois' : nPreinteg + ' mois';
         postesDyn.forEach(function (el) { el.textContent = String(nbPostes); });
 
         gainPhase1El.textContent = formatEuro(Math.round(gainA));
-        gainPhase2El.textContent = parcoursOptimal ? formatEuro(Math.round(gainB)) : '—';
+        if (parcoursOptimal) {
+          gainPhase2El.textContent = formatEuro(Math.round(gainB));
+          gainPhase2El.className = 'mt-4 font-display text-2xl font-bold text-night';
+          if (phaseBDesc) phaseBDesc.textContent = "Charges réduites + Aides d'État intégrées";
+          if (phaseBHint) {
+            phaseBHint.textContent = 'économie Phase B vs embauche classique';
+            phaseBHint.classList.remove('hidden');
+          }
+        } else {
+          gainPhase2El.textContent = 'Option non sélectionnée (Contrat classique post-pré-intégration).';
+          gainPhase2El.className = 'mt-4 text-sm font-medium leading-relaxed text-slate-600';
+          if (phaseBDesc) phaseBDesc.textContent = 'Non inclus dans cette formule';
+          if (phaseBHint) phaseBHint.classList.add('hidden');
+        }
         if (phaseBCard) {
-          phaseBCard.style.opacity = parcoursOptimal ? '1' : '0.45';
+          phaseBCard.style.opacity = parcoursOptimal ? '1' : '0.55';
         }
         bonusTutoratEl.textContent = formatEuro(bonusTutoratMin) + ' → ' + formatEuro(bonusTutoratMax);
 
-        classiqueMasseAn.textContent = formatEuro(Math.round(masseMensuelleChargeeParPoste * 12 * nbPostes));
-        fraisRecrutementLabel.textContent = 'Temps / coût d\'intégration (estimé)';
-        classiqueFrais.textContent = formatEuro(coutRecrutementClassique * nbPostes);
+        classiqueMensuel.textContent = formatEuro(Math.round(coutMensuelClassique * nbPostes));
+        classiquePeriodeLabel.textContent = 'Période (' + nPreinteg + ' + 12 = ' + moisTotal + ' mois)';
+        classiquePeriode.textContent = moisTotal + ' mois';
+        classiqueTitre.textContent = 'Sans OptiMasse (' + moisTotal + ' mois)';
         classiqueTotal.textContent = formatEuro(totalClassiqueArrondi);
 
+        if (optiTitre) {
+          optiTitre.textContent = parcoursOptimal
+            ? 'Avec OptiMasse — Parcours Optimal'
+            : 'Avec OptiMasse — Pré-intégration seule';
+        }
         formuleLabel.textContent = parcoursOptimal
           ? 'Parcours Optimal — 900 € HT / poste'
           : 'Pré-intégration seule — 450 € HT / poste';
+        if (masseOptiLabel) {
+          masseOptiLabel.textContent = parcoursOptimal
+            ? 'pré-intégration 0 € + contrat à coût optimisé'
+            : 'pré-intégration 0 € + contrat classique (12 mois)';
+        }
+        if (parcoursTitle) {
+          parcoursTitle.textContent = parcoursOptimal ? 'Parcours Optimal' : 'Pré-intégration seule';
+        }
         if (parcoursHint) {
           parcoursHint.textContent = parcoursOptimal
-            ? '900 € HT / poste — pré-intégration + embauche optimisée. Les 450 € HT de pré-intégration sont déductibles du parcours complet.'
-            : '450 € HT / poste — pré-intégration seule. Déductibles si vous passez ensuite au Parcours Optimal.';
+            ? 'Pré-intégration + contrat à coût optimisé'
+            : 'Pré-intégration seule, puis contrat classique';
         }
         optiMasseAn.textContent = formatEuro(Math.round(masseSalarialeOptimisee));
         honorairesEl.textContent = formatEuro(totalHonorairesOptiMasse) + ' HT';
@@ -1045,24 +1083,38 @@
         barOptiLabel.textContent = formatEuro(totalOptiArrondi);
 
         economieDetail.textContent =
-          'Total classique (' + formatEuro(totalClassiqueArrondi) +
-          ') − Total OptiMasse (' + formatEuro(totalOptiArrondi) +
-          ') = ' + formatEuro(economieArrondie) + " d'économie NETTE";
+          'Sans OptiMasse (' + formatEuro(totalClassiqueArrondi) +
+          ') − Avec OptiMasse (' + formatEuro(totalOptiArrondi) +
+          ') = ' + formatEuro(economieArrondie) + " d'économie nette";
 
         economieBonus.textContent =
-          'Bonus net à percevoir (tutorat) : ' + formatEuro(bonusTutoratMin) +
-          ' minimum · jusqu\'à ' + formatEuro(bonusTutoratMax);
+          '+ Bonus tutorat : ' + formatEuro(bonusTutoratMin) +
+          ' à ' + formatEuro(bonusTutoratMax) + ' selon la durée';
 
         animateNumber(displayedSavings, economieArrondie, 450, function (v) {
           displayedSavings = v;
-          economieTexte.textContent = formatEuro(v) + " d'économie NETTE au total !";
+          economieTexte.textContent = formatEuro(v);
         });
-        economieParPoste.textContent = 'soit ' + formatEuro(Math.round(economieParPosteVal)) + ' par poste';
+        economieParPoste.textContent =
+          'soit ' + formatEuro(Math.round(economieParPosteVal)) +
+          ' par poste sur ' + moisTotal + ' mois';
       }
 
       postesInput.addEventListener('input', updateSimulator);
       salaireInput.addEventListener('input', updateSimulator);
       dureePreIntegInput.addEventListener('input', updateSimulator);
+
+      const detailToggleLabel = document.getElementById('detail-toggle-label');
+      detailToggle.addEventListener('click', function () {
+        const open = simDetail.classList.toggle('hidden') === false;
+        simDetail.hidden = !open;
+        detailToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        detailToggleLabel.textContent = open ? 'Masquer le détail' : 'Voir le détail du calcul';
+        const chevronSvg = detailChevron.querySelector('svg');
+        if (chevronSvg) {
+          chevronSvg.style.transform = open ? 'rotate(180deg)' : '';
+        }
+      });
 
       parcoursToggle.addEventListener('click', function () {
         parcoursOptimal = !parcoursOptimal;
