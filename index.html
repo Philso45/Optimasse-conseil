@@ -254,8 +254,9 @@
       transition: transform 0.25s ease;
     }
 
-    /* Agenda HubSpot — conteneur fluide ; bas recadré pour masquer le branding HubSpot */
+    /* Agenda HubSpot — masque opaque sur le bandeau promo HubSpot (bas de l'iframe) */
     #panel-meeting .meeting-shell {
+      position: relative;
       margin: 0 auto;
       max-width: 56rem;
       overflow: hidden;
@@ -264,8 +265,19 @@
       background: #ffffff;
       box-shadow: 0 12px 40px -16px rgba(15, 23, 42, 0.14);
     }
+    #panel-meeting .meeting-shell::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 56px;
+      background: #ffffff;
+      border-radius: 0 0 0.5rem 0.5rem;
+      z-index: 20;
+      pointer-events: auto;
+    }
     .meetings-iframe-container {
-      --hs-brand-clip: 58px;
       position: relative;
       min-width: 0;
       width: 100%;
@@ -276,9 +288,8 @@
     .meetings-iframe-container iframe {
       display: block;
       width: 100%;
-      /* Légèrement plus haut que le conteneur : le bandeau "Create your free…" est coupé */
-      height: calc(100% + var(--hs-brand-clip)) !important;
-      min-height: calc(100% + var(--hs-brand-clip));
+      height: 100% !important;
+      min-height: 100%;
       border: 0;
       background: #ffffff;
     }
@@ -287,8 +298,11 @@
         max-width: 100%;
         border-radius: 0.375rem;
       }
+      #panel-meeting .meeting-shell::after {
+        height: 64px;
+        border-radius: 0 0 0.375rem 0.375rem;
+      }
       .meetings-iframe-container {
-        --hs-brand-clip: 64px;
         height: clamp(960px, 95vh, 1200px);
       }
     }
@@ -931,7 +945,6 @@
       function sizeMeetingFrame(explicitHeight) {
         if (!meetingInline) return;
         var frame = document.getElementById('hs-meeting-iframe');
-        var brandClip = window.innerWidth <= 768 ? 64 : 58;
         var px;
         if (explicitHeight && !isNaN(Number(explicitHeight))) {
           px = Math.max(820, Math.ceil(Number(explicitHeight)));
@@ -944,8 +957,8 @@
         }
         meetingInline.style.height = px + 'px';
         if (frame) {
-          frame.style.height = (px + brandClip) + 'px';
-          frame.style.minHeight = (px + brandClip) + 'px';
+          frame.style.height = px + 'px';
+          frame.style.minHeight = px + 'px';
         }
       }
 
