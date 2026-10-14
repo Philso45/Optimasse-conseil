@@ -254,9 +254,8 @@
       transition: transform 0.25s ease;
     }
 
-    /* Agenda HubSpot — masque opaque sur le bandeau promo HubSpot (bas de l'iframe) */
+    /* Agenda HubSpot */
     #panel-meeting .meeting-shell {
-      position: relative;
       margin: 0 auto;
       max-width: 56rem;
       overflow: hidden;
@@ -264,18 +263,6 @@
       border: 1px solid #e2e8f0;
       background: #ffffff;
       box-shadow: 0 12px 40px -16px rgba(15, 23, 42, 0.14);
-    }
-    #panel-meeting .meeting-shell::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 56px;
-      background: #ffffff;
-      border-radius: 0 0 0.5rem 0.5rem;
-      z-index: 20;
-      pointer-events: auto;
     }
     .meetings-iframe-container {
       position: relative;
@@ -297,10 +284,6 @@
       #panel-meeting .meeting-shell {
         max-width: 100%;
         border-radius: 0.375rem;
-      }
-      #panel-meeting .meeting-shell::after {
-        height: 64px;
-        border-radius: 0 0 0.375rem 0.375rem;
       }
       .meetings-iframe-container {
         height: clamp(960px, 95vh, 1200px);
