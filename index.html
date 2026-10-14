@@ -10,8 +10,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
-  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -256,10 +254,15 @@
       transition: transform 0.25s ease;
     }
 
-    .calendly-inline-widget {
+    .meetings-iframe-container {
       min-width: 320px;
       height: 700px;
       width: 100%;
+    }
+    .meetings-iframe-container iframe {
+      width: 100%;
+      height: 700px;
+      border: 0;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -290,7 +293,7 @@
         <a href="#contact" class="transition hover:text-white">Contact</a>
       </nav>
       <div class="flex items-center gap-3">
-        <button type="button" id="nav-cta" data-calendly-open
+        <button type="button" id="nav-cta" data-meeting-open
           class="hidden rounded-md bg-emerald px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-600 sm:inline-flex">
           Auditer ma masse salariale
         </button>
@@ -309,7 +312,7 @@
         <a href="#leviers" class="rounded-md px-3 py-2.5 hover:bg-white/5">Comment ça marche</a>
         <a href="#faq" class="rounded-md px-3 py-2.5 hover:bg-white/5">FAQ</a>
         <a href="#contact" class="rounded-md px-3 py-2.5 hover:bg-white/5">Contact</a>
-        <button type="button" data-calendly-open
+        <button type="button" data-meeting-open
           class="mt-2 rounded-md bg-emerald px-4 py-3 text-left font-semibold text-white">
           Auditer ma masse salariale
         </button>
@@ -352,7 +355,7 @@
           Pour commerçants et dirigeants de PME&nbsp;: on monte votre pré-intégration et on optimise vos charges d'embauche, sans paperasse de votre côté. Expertise terrain issue de la restauration.
         </p>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center reveal is-visible" style="transition-delay: 240ms">
-          <button type="button" data-calendly-open
+          <button type="button" data-meeting-open
             class="inline-flex items-center justify-center rounded-md bg-emerald px-6 py-3.5 text-base font-semibold text-white transition hover:bg-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald focus-visible:ring-offset-2 focus-visible:ring-offset-night">
             Demander mon étude offerte (2 min)
           </button>
@@ -409,7 +412,7 @@
             <p id="economie-texte" class="mt-3 break-words font-display text-[1.75rem] font-bold leading-tight tabular-nums sm:text-4xl md:text-5xl">—</p>
             <p id="economie-par-poste" class="mt-3 text-sm text-emerald-100 sm:text-base">—</p>
             <p id="economie-bonus" class="mt-2 text-xs font-medium text-white/90 sm:text-sm">—</p>
-            <button type="button" data-calendly-open
+            <button type="button" data-meeting-open
               class="mt-6 inline-flex w-full items-center justify-center rounded-md bg-night px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800 sm:w-auto sm:px-6">
               Confirmer cette économie avec un conseiller
             </button>
@@ -614,7 +617,7 @@
             <p class="mt-8 border-t border-slate-200 pt-6 text-sm text-slate-600">
               <span class="font-semibold text-night">À noter :</span> Les 450&nbsp;€ HT sont intégralement déduits si vous optez pour le parcours d'embauche complet.
             </p>
-            <button type="button" data-calendly-open
+            <button type="button" data-meeting-open
               class="mt-6 w-full rounded-md border border-night bg-transparent px-5 py-3.5 text-sm font-semibold text-night transition hover:bg-night hover:text-white">
               Choisir cette formule
             </button>
@@ -636,7 +639,7 @@
             <p class="mt-8 border-t border-slate-200 pt-6 text-sm text-slate-600">
               <span class="font-semibold text-night">Tarification :</span> 450&nbsp;€ HT à la commande + 450&nbsp;€ HT à la validation / embauche (ou 900&nbsp;€ HT en une fois).
             </p>
-            <button type="button" data-calendly-open
+            <button type="button" data-meeting-open
               class="mt-6 w-full rounded-md bg-emerald px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-emerald-600">
               Choisir cette formule
             </button>
@@ -784,14 +787,14 @@
               class="rounded px-4 py-2.5 text-sm font-semibold text-white bg-night transition">
               Formulaire + RDV
             </button>
-            <button type="button" id="tab-calendly" role="tab" aria-selected="false" aria-controls="panel-calendly"
+            <button type="button" id="tab-meeting" role="tab" aria-selected="false" aria-controls="panel-meeting"
               class="rounded px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:text-night">
               Réserver un créneau
             </button>
           </div>
         </div>
 
-        <!-- Option A : Formulaire puis Calendly popup -->
+        <!-- Option A : Formulaire puis HubSpot Meetings -->
         <div id="panel-form" role="tabpanel" aria-labelledby="tab-form" class="reveal mt-8">
           <form id="contact-form" class="mx-auto max-w-2xl space-y-5 rounded-lg border border-slate-200 bg-mist p-6 sm:p-8" novalidate>
             <div class="grid gap-5 sm:grid-cols-2">
@@ -854,19 +857,18 @@
               Après validation, le calendrier s'ouvre pour choisir votre créneau téléphonique.
             </p>
             <p id="form-success" class="hidden text-center text-sm font-medium text-emerald-700" role="status">
-              Merci. Choisissez maintenant votre créneau dans la fenêtre Calendly.
+              Merci. Choisissez maintenant votre créneau dans la fenêtre de rendez-vous.
             </p>
           </form>
         </div>
 
-        <!-- Option B : Embed Calendly inline -->
-        <div id="panel-calendly" role="tabpanel" aria-labelledby="tab-calendly" class="reveal mt-8 hidden" hidden>
+        <!-- Option B : Embed HubSpot Meetings inline -->
+        <div id="panel-meeting" role="tabpanel" aria-labelledby="tab-meeting" class="reveal mt-8 hidden" hidden>
           <div class="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-soft">
             <div
-              id="calendly-inline"
-              class="calendly-inline-widget"
-              data-url="https://calendly.com/contact-optimasse-conseil"
-              style="min-width:320px;height:700px;"
+              id="meeting-inline"
+              class="meetings-iframe-container"
+              data-src="https://meetings-eu1.hubspot.com/philippe-soosai?embed=true"
             ></div>
           </div>
         </div>
@@ -900,22 +902,25 @@
     (function () {
       'use strict';
 
-      /* ——— Calendly ——— */
-      const CALENDLY_URL = 'https://calendly.com/contact-optimasse-conseil';
+      /* ——— HubSpot Meetings ——— */
+      const MEETING_URL = 'https://meetings-eu1.hubspot.com/philippe-soosai';
 
-      function openCalendly(prefill) {
-        if (typeof Calendly === 'undefined' || !Calendly.initPopupWidget) {
-          window.open(CALENDLY_URL, '_blank', 'noopener,noreferrer');
-          return;
+      function openMeeting(prefill) {
+        var url = MEETING_URL;
+        if (prefill) {
+          var params = new URLSearchParams();
+          if (prefill.firstname) params.set('firstname', prefill.firstname);
+          if (prefill.lastname) params.set('lastname', prefill.lastname);
+          if (prefill.email) params.set('email', prefill.email);
+          var qs = params.toString();
+          if (qs) url += '?' + qs;
         }
-        const opts = { url: CALENDLY_URL };
-        if (prefill) opts.prefill = prefill;
-        Calendly.initPopupWidget(opts);
+        window.open(url, '_blank', 'noopener,noreferrer');
       }
 
-      document.querySelectorAll('[data-calendly-open]').forEach(function (btn) {
+      document.querySelectorAll('[data-meeting-open]').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          openCalendly();
+          openMeeting();
         });
       });
 
@@ -1180,39 +1185,45 @@
       });
 
       const tabForm = document.getElementById('tab-form');
-      const tabCalendly = document.getElementById('tab-calendly');
+      const tabMeeting = document.getElementById('tab-meeting');
       const panelForm = document.getElementById('panel-form');
-      const panelCalendly = document.getElementById('panel-calendly');
-      const calendlyInline = document.getElementById('calendly-inline');
-      let calendlyEmbedReady = false;
+      const panelMeeting = document.getElementById('panel-meeting');
+      const meetingInline = document.getElementById('meeting-inline');
+      let meetingEmbedReady = false;
+
+      function loadMeetingEmbed() {
+        if (meetingEmbedReady || !meetingInline) return;
+        meetingInline.setAttribute('data-src', MEETING_URL + '?embed=true');
+        if (!document.getElementById('hs-meetings-embed')) {
+          var script = document.createElement('script');
+          script.id = 'hs-meetings-embed';
+          script.type = 'text/javascript';
+          script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
+          document.body.appendChild(script);
+        }
+        meetingEmbedReady = true;
+      }
 
       function setTab(mode) {
         const isForm = mode === 'form';
         tabForm.setAttribute('aria-selected', isForm ? 'true' : 'false');
-        tabCalendly.setAttribute('aria-selected', isForm ? 'false' : 'true');
+        tabMeeting.setAttribute('aria-selected', isForm ? 'false' : 'true');
         tabForm.className = isForm
           ? 'rounded px-4 py-2.5 text-sm font-semibold text-white bg-night transition'
           : 'rounded px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:text-night';
-        tabCalendly.className = !isForm
+        tabMeeting.className = !isForm
           ? 'rounded px-4 py-2.5 text-sm font-semibold text-white bg-night transition'
           : 'rounded px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:text-night';
         panelForm.classList.toggle('hidden', !isForm);
         panelForm.hidden = !isForm;
-        panelCalendly.classList.toggle('hidden', isForm);
-        panelCalendly.hidden = isForm;
+        panelMeeting.classList.toggle('hidden', isForm);
+        panelMeeting.hidden = isForm;
 
-        if (!isForm && !calendlyEmbedReady && typeof Calendly !== 'undefined' && Calendly.initInlineWidget) {
-          calendlyInline.setAttribute('data-url', CALENDLY_URL);
-          Calendly.initInlineWidget({
-            url: CALENDLY_URL,
-            parentElement: calendlyInline,
-          });
-          calendlyEmbedReady = true;
-        }
+        if (!isForm) loadMeetingEmbed();
       }
 
       tabForm.addEventListener('click', function () { setTab('form'); });
-      tabCalendly.addEventListener('click', function () { setTab('calendly'); });
+      tabMeeting.addEventListener('click', function () { setTab('meeting'); });
 
       const contactForm = document.getElementById('contact-form');
       const formSuccess = document.getElementById('form-success');
@@ -1250,20 +1261,12 @@
 
         formSuccess.classList.remove('hidden');
 
-        openCalendly({
-          name: prenom + ' ' + nom,
+        openMeeting({
+          firstname: prenom,
+          lastname: nom,
           email: email,
-          customAnswers: {
-            a1: entreprise,
-            a2: telephone,
-            a3: nbPostes + ' poste(s) — ' + optionLabel,
-          },
         });
       });
-
-      if (calendlyInline) {
-        calendlyInline.setAttribute('data-url', CALENDLY_URL);
-      }
 
       const reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window) {
