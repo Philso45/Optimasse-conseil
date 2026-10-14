@@ -864,8 +864,8 @@
                   class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
               </div>
               <div>
-                <label for="telephone" class="block text-sm font-medium text-night">Numéro de téléphone portable</label>
-                <input type="tel" id="telephone" name="mobilephone" autocomplete="tel" placeholder="+33 6 00 00 00 00"
+                <label for="telephone" class="block text-sm font-medium text-night">Numéro de téléphone portable <span class="text-emerald">*</span></label>
+                <input type="tel" id="telephone" name="phone" required autocomplete="tel" inputmode="tel" placeholder="06 00 00 00 00"
                   class="mt-1.5 w-full rounded-md border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-night outline-none transition focus:border-emerald focus:ring-2 focus:ring-emerald/30" />
               </div>
               <button type="submit" id="contact-submit"
@@ -1267,6 +1267,43 @@
         return match ? decodeURIComponent(match[1]) : undefined;
       }
 
+      /* Normalise un n° FR vers un format acceptable HubSpot (+33…) */
+      function normalizePhone(raw) {
+        var value = String(raw || '').trim();
+        if (!value) return '';
+        var digits = value.replace(/[^\d+]/g, '');
+        if (digits.indexOf('+') === 0) {
+          return '+' + digits.slice(1).replace(/\D/g, '');
+        }
+        var only = digits.replace(/\D/g, '');
+        if (only.indexOf('0033') === 0) only = only.slice(4);
+        else if (only.indexOf('33') === 0 && only.length >= 11) only = only.slice(2);
+        else if (only.charAt(0) === '0') only = only.slice(1);
+        if (only.length === 9) return '+33' + only;
+        if (only.length > 0) return '+' + only;
+        return value;
+      }
+
+      function submitHubSpotFields(fields) {
+        var payload = {
+          fields: fields,
+          context: {
+            pageUri: window.location.href,
+            pageName: document.title,
+          },
+        };
+        var hutk = getHubSpotUtk();
+        if (hutk) payload.context.hutk = hutk;
+        return fetch(HS_SUBMIT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        }).then(function (res) {
+          if (!res.ok) throw new Error('submit_failed');
+          return res.text();
+        });
+      }
+
       function setTab(mode) {
         const isForm = mode === 'form';
         tabForm.setAttribute('aria-selected', isForm ? 'true' : 'false');
@@ -1304,7 +1341,7 @@
           var prenom = document.getElementById('prenom').value.trim();
           var nom = document.getElementById('nom').value.trim();
           var email = document.getElementById('email').value.trim();
-          var telephone = document.getElementById('telephone').value.trim();
+          var telephone = normalizePhone(document.getElementById('telephone').value);
 
           formError.classList.add('hidden');
           formError.textContent = '';
@@ -1312,32 +1349,27 @@
           contactSubmit.disabled = true;
           contactSubmit.textContent = 'Envoi en cours…';
 
-          var fields = [
+          var baseFields = [
             { objectTypeId: '0-1', name: 'email', value: email },
           ];
-          if (prenom) fields.push({ objectTypeId: '0-1', name: 'firstname', value: prenom });
-          if (nom) fields.push({ objectTypeId: '0-1', name: 'lastname', value: nom });
-          if (telephone) fields.push({ objectTypeId: '0-1', name: 'mobilephone', value: telephone });
+          if (prenom) baseFields.push({ objectTypeId: '0-1', name: 'firstname', value: prenom });
+          if (nom) baseFields.push({ objectTypeId: '0-1', name: 'lastname', value: nom });
 
-          var payload = {
-            fields: fields,
-            context: {
-              pageUri: window.location.href,
-              pageName: document.title,
-            },
-          };
-          var hutk = getHubSpotUtk();
-          if (hutk) payload.context.hutk = hutk;
+          /* HubSpot : on envoie phone + mobilephone (selon le champ présent sur le formulaire) */
+          var phoneFieldsBoth = baseFields.concat([
+            { objectTypeId: '0-1', name: 'phone', value: telephone },
+            { objectTypeId: '0-1', name: 'mobilephone', value: telephone },
+          ]);
+          var phoneFieldsMobile = baseFields.concat([
+            { objectTypeId: '0-1', name: 'mobilephone', value: telephone },
+          ]);
+          var phoneFieldsPhone = baseFields.concat([
+            { objectTypeId: '0-1', name: 'phone', value: telephone },
+          ]);
 
-          fetch(HS_SUBMIT_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-          })
-            .then(function (res) {
-              if (!res.ok) throw new Error('submit_failed');
-              return res.text();
-            })
+          submitHubSpotFields(phoneFieldsBoth)
+            .catch(function () { return submitHubSpotFields(phoneFieldsMobile); })
+            .catch(function () { return submitHubSpotFields(phoneFieldsPhone); })
             .then(function () {
               formSuccess.classList.remove('hidden');
               showMeeting({
