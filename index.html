@@ -255,14 +255,24 @@
     }
 
     .meetings-iframe-container {
-      min-width: 320px;
-      height: 700px;
+      min-width: 0;
       width: 100%;
+      min-height: 680px;
+      height: min(78vh, 780px);
     }
     .meetings-iframe-container iframe {
+      display: block;
       width: 100%;
-      height: 700px;
+      min-height: 680px;
+      height: min(78vh, 780px);
       border: 0;
+    }
+    @media (max-width: 640px) {
+      .meetings-iframe-container,
+      .meetings-iframe-container iframe {
+        min-height: 720px;
+        height: 85vh;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -776,26 +786,39 @@
             Obtenez votre diagnostic d'économie
           </h2>
           <p class="mt-4 text-lg text-slate-600">
-            Remplissez le formulaire pour être recontacté, puis réservez un créneau. Pour toute question : <a href="mailto:contact@optimasse-conseil.fr" class="font-medium text-emerald hover:underline">contact@optimasse-conseil.fr</a>
+            Réservez un créneau directement ci-dessous, ou laissez vos coordonnées. Pour toute question : <a href="mailto:contact@optimasse-conseil.fr" class="font-medium text-emerald hover:underline">contact@optimasse-conseil.fr</a>
           </p>
         </div>
 
         <!-- Sélecteur d'option -->
         <div class="reveal mt-10 flex justify-center" role="tablist" aria-label="Mode de prise de contact">
           <div class="inline-flex rounded-md border border-slate-200 bg-mist p-1">
-            <button type="button" id="tab-form" role="tab" aria-selected="true" aria-controls="panel-form"
+            <button type="button" id="tab-meeting" role="tab" aria-selected="true" aria-controls="panel-meeting"
               class="rounded px-4 py-2.5 text-sm font-semibold text-white bg-night transition">
-              Formulaire + RDV
-            </button>
-            <button type="button" id="tab-meeting" role="tab" aria-selected="false" aria-controls="panel-meeting"
-              class="rounded px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:text-night">
               Réserver un créneau
+            </button>
+            <button type="button" id="tab-form" role="tab" aria-selected="false" aria-controls="panel-form"
+              class="rounded px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:text-night">
+              Formulaire + RDV
             </button>
           </div>
         </div>
 
-        <!-- Option A : Formulaire puis HubSpot Meetings -->
-        <div id="panel-form" role="tabpanel" aria-labelledby="tab-form" class="reveal mt-8">
+        <!-- Option A : Embed HubSpot Meetings (snippet officiel) -->
+        <div id="panel-meeting" role="tabpanel" aria-labelledby="tab-meeting" class="reveal mt-8">
+          <div class="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-soft">
+            <!-- Start of Meetings Embed Script -->
+            <div
+              id="meeting-inline"
+              class="meetings-iframe-container"
+              data-src="https://meetings-eu1.hubspot.com/philippe-soosai?embed=true"
+            ></div>
+            <!-- End of Meetings Embed Script -->
+          </div>
+        </div>
+
+        <!-- Option B : Formulaire puis widget RDV -->
+        <div id="panel-form" role="tabpanel" aria-labelledby="tab-form" class="reveal mt-8 hidden" hidden>
           <form id="contact-form" class="mx-auto max-w-2xl space-y-5 rounded-lg border border-slate-200 bg-mist p-6 sm:p-8" novalidate>
             <div class="grid gap-5 sm:grid-cols-2">
               <div>
@@ -854,23 +877,12 @@
               Obtenir mon diagnostic d'économie offert
             </button>
             <p class="text-center text-xs text-slate-500">
-              Après validation, le calendrier s'ouvre pour choisir votre créneau téléphonique.
+              Après validation, le calendrier de rendez-vous s'affiche pour choisir votre créneau.
             </p>
             <p id="form-success" class="hidden text-center text-sm font-medium text-emerald-700" role="status">
-              Merci. Choisissez maintenant votre créneau dans la fenêtre de rendez-vous.
+              Merci. Choisissez maintenant votre créneau dans le calendrier ci-dessous.
             </p>
           </form>
-        </div>
-
-        <!-- Option B : Embed HubSpot Meetings inline -->
-        <div id="panel-meeting" role="tabpanel" aria-labelledby="tab-meeting" class="reveal mt-8 hidden" hidden>
-          <div class="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-soft">
-            <div
-              id="meeting-inline"
-              class="meetings-iframe-container"
-              data-src="https://meetings-eu1.hubspot.com/philippe-soosai?embed=true"
-            ></div>
-          </div>
         </div>
       </div>
     </section>
@@ -902,25 +914,50 @@
     (function () {
       'use strict';
 
-      /* ——— HubSpot Meetings ——— */
+      /* ——— HubSpot Meetings (embed in-page) ——— */
       const MEETING_URL = 'https://meetings-eu1.hubspot.com/philippe-soosai';
+      const meetingInline = document.getElementById('meeting-inline');
+      let meetingEmbedMounted = false;
 
-      function openMeeting(prefill) {
-        var url = MEETING_URL;
+      function buildMeetingSrc(prefill) {
+        var params = new URLSearchParams();
+        params.set('embed', 'true');
         if (prefill) {
-          var params = new URLSearchParams();
           if (prefill.firstname) params.set('firstname', prefill.firstname);
           if (prefill.lastname) params.set('lastname', prefill.lastname);
           if (prefill.email) params.set('email', prefill.email);
-          var qs = params.toString();
-          if (qs) url += '?' + qs;
         }
-        window.open(url, '_blank', 'noopener,noreferrer');
+        return MEETING_URL + '?' + params.toString();
+      }
+
+      function mountMeetingEmbed(prefill) {
+        if (!meetingInline) return;
+        var src = buildMeetingSrc(prefill);
+        meetingInline.innerHTML = '';
+        meetingInline.setAttribute('data-src', src);
+        var iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.title = 'Réserver un rendez-vous avec OptiMasse Conseil';
+        iframe.setAttribute('loading', 'lazy');
+        iframe.setAttribute('allowfullscreen', '');
+        meetingInline.appendChild(iframe);
+        meetingEmbedMounted = true;
+      }
+
+      function showMeeting(prefill) {
+        setTab('meeting');
+        if (prefill || !meetingEmbedMounted) {
+          mountMeetingEmbed(prefill);
+        }
+        var contact = document.getElementById('contact');
+        if (contact) {
+          contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }
 
       document.querySelectorAll('[data-meeting-open]').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          openMeeting();
+          showMeeting();
         });
       });
 
@@ -1188,21 +1225,6 @@
       const tabMeeting = document.getElementById('tab-meeting');
       const panelForm = document.getElementById('panel-form');
       const panelMeeting = document.getElementById('panel-meeting');
-      const meetingInline = document.getElementById('meeting-inline');
-      let meetingEmbedReady = false;
-
-      function loadMeetingEmbed() {
-        if (meetingEmbedReady || !meetingInline) return;
-        meetingInline.setAttribute('data-src', MEETING_URL + '?embed=true');
-        if (!document.getElementById('hs-meetings-embed')) {
-          var script = document.createElement('script');
-          script.id = 'hs-meetings-embed';
-          script.type = 'text/javascript';
-          script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
-          document.body.appendChild(script);
-        }
-        meetingEmbedReady = true;
-      }
 
       function setTab(mode) {
         const isForm = mode === 'form';
@@ -1219,11 +1241,26 @@
         panelMeeting.classList.toggle('hidden', isForm);
         panelMeeting.hidden = isForm;
 
-        if (!isForm) loadMeetingEmbed();
+        if (!isForm && !meetingEmbedMounted) mountMeetingEmbed();
       }
 
       tabForm.addEventListener('click', function () { setTab('form'); });
       tabMeeting.addEventListener('click', function () { setTab('meeting'); });
+
+      /* Charge le widget dès que la section contact approche (responsive, sans lien externe) */
+      if (meetingInline && 'IntersectionObserver' in window) {
+        var meetingIo = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              if (!meetingEmbedMounted) mountMeetingEmbed();
+              meetingIo.disconnect();
+            }
+          });
+        }, { rootMargin: '200px 0px' });
+        meetingIo.observe(meetingInline);
+      } else if (!meetingEmbedMounted) {
+        mountMeetingEmbed();
+      }
 
       const contactForm = document.getElementById('contact-form');
       const formSuccess = document.getElementById('form-success');
@@ -1261,7 +1298,7 @@
 
         formSuccess.classList.remove('hidden');
 
-        openMeeting({
+        showMeeting({
           firstname: prenom,
           lastname: nom,
           email: email,
