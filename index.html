@@ -834,7 +834,7 @@
             <div
               id="meeting-inline"
               class="meetings-iframe-container"
-              data-src="https://meetings-eu1.hubspot.com/philippe-soosai?embed=true"
+              data-src="https://meetings-eu1.hubspot.com/philippe-soosai?embed=true&locale=fr&timezone=Europe%2FParis"
             ></div>
           </div>
         </div>
@@ -917,6 +917,9 @@
       function buildMeetingSrc(prefill) {
         var params = new URLSearchParams();
         params.set('embed', 'true');
+        /* Clientèle 100 % FR : interface FR + fuseau Paris */
+        params.set('locale', 'fr');
+        params.set('timezone', 'Europe/Paris');
         if (prefill) {
           if (prefill.firstname) params.set('firstname', prefill.firstname);
           if (prefill.lastname) params.set('lastname', prefill.lastname);
