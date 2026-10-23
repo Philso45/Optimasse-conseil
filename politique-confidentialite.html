@@ -26,23 +26,7 @@
     body { font-family: 'Outfit', sans-serif; background: #F8FAFC; color: #0F172A; }
     .font-display { font-family: 'Syne', sans-serif; }
   </style>
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1036304956133147');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1036304956133147&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
+  <script src="cookie-consent.js" defer></script>
 </head>
 <body class="antialiased">
   <header class="border-b border-slate-200 bg-night text-white">
@@ -64,22 +48,25 @@
     <section class="mt-12 space-y-3">
       <h2 class="font-display text-xl font-bold text-night">1. Responsable du traitement</h2>
       <p class="text-sm leading-relaxed text-slate-700">
-        OptiMasse Conseil — Philippe Soosai Arokiadoss, micro-entreprise.<br />
+        OptiMasse Conseil — Philippe Soosai Arokiadoss, entreprise individuelle (micro-entreprise).<br />
         Contact : <a class="text-emerald hover:underline" href="mailto:contact@optimasse-conseil.fr">contact@optimasse-conseil.fr</a>
       </p>
     </section>
 
     <section class="mt-10 space-y-3">
-      <h2 class="font-display text-xl font-bold text-night">2. Données collectées</h2>
+      <h2 class="font-display text-xl font-bold text-night">2. Collecte via les formulaires</h2>
       <p class="text-sm leading-relaxed text-slate-700">
-        Dans le cadre d'une demande de diagnostic ou de prise de rendez-vous, nous pouvons collecter :
+        Lorsque vous utilisez le formulaire de contact / diagnostic ou le widget de prise de rendez-vous, nous pouvons collecter les données suivantes :
       </p>
       <ul class="list-disc space-y-1 pl-5 text-sm text-slate-700">
-        <li>Identité : prénom, nom</li>
-        <li>Coordonnées : email, téléphone</li>
-        <li>Informations professionnelles : nom de l'établissement / entreprise, nombre de postes, formule souhaitée</li>
-        <li>Données techniques éventuelles : préférences de créneau via HubSpot Meetings</li>
+        <li>Nom et prénom</li>
+        <li>Adresse e-mail</li>
+        <li>Numéro de téléphone</li>
+        <li>Informations éventuellement communiquées dans le cadre de l'échange (entreprise, postes, créneau, etc.)</li>
       </ul>
+      <p class="mt-3 text-sm leading-relaxed text-slate-700">
+        Ces données sont collectées <span class="font-semibold text-night">uniquement</span> à des fins de prise de contact et de diagnostic financier / accompagnement précontractuel. Elles ne sont pas utilisées à d'autres fins sans information préalable.
+      </p>
       <p class="text-sm leading-relaxed text-slate-700">
         Le simulateur d'économies fonctionne localement dans votre navigateur et ne transmet pas automatiquement vos paramètres de simulation, sauf si vous les communiquez volontairement lors d'un échange.
       </p>
@@ -90,22 +77,24 @@
       <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
         <li><span class="font-semibold text-night">Prise de contact / diagnostic :</span> exécution de mesures précontractuelles ou intérêt légitime à répondre à votre demande.</li>
         <li><span class="font-semibold text-night">Prise de rendez-vous :</span> exécution de mesures précontractuelles via HubSpot Meetings.</li>
+        <li><span class="font-semibold text-night">Mesure d'audience et d'efficacité des campagnes :</span> consentement (cookies / pixels de suivi, notamment Meta Ads).</li>
         <li><span class="font-semibold text-night">Suivi commercial :</span> intérêt légitime, dans la limite de ce qui est nécessaire et proportionné.</li>
       </ul>
     </section>
 
     <section class="mt-10 space-y-3">
-      <h2 class="font-display text-xl font-bold text-night">4. Destinataires</h2>
+      <h2 class="font-display text-xl font-bold text-night">4. Destinataires — pas de vente ni de cession</h2>
       <p class="text-sm leading-relaxed text-slate-700">
-        Les données sont destinées à OptiMasse Conseil. Elles peuvent être transmises à :
+        <span class="font-semibold text-night">Vos données ne sont ni vendues, ni louées, ni cédées à des tiers</span> à des fins commerciales.
+      </p>
+      <p class="mt-3 text-sm leading-relaxed text-slate-700">
+        Elles sont destinées à OptiMasse Conseil et peuvent être traitées, uniquement pour les finalités décrites, par des prestataires techniques :
       </p>
       <ul class="list-disc space-y-1 pl-5 text-sm text-slate-700">
-        <li><span class="font-semibold text-night">HubSpot</span> — pour le formulaire de contact et la réservation de créneaux (voir la politique de confidentialité de HubSpot)</li>
+        <li><span class="font-semibold text-night">HubSpot</span> — formulaire de contact et réservation de créneaux</li>
         <li><span class="font-semibold text-night">Vercel</span> — hébergement technique du site</li>
+        <li><span class="font-semibold text-night">Meta (Facebook / Instagram)</span> — mesure d'audience et d'efficacité des campagnes publicitaires, uniquement si vous avez accepté les cookies de suivi</li>
       </ul>
-      <p class="mt-3 text-sm leading-relaxed text-slate-700">
-        Elles ne sont ni vendues, ni louées, ni cédées à des tiers à des fins commerciales.
-      </p>
     </section>
 
     <section class="mt-10 space-y-3">
@@ -114,14 +103,14 @@
         Les données de contact liées à une demande sont conservées pendant la durée nécessaire au traitement de la demande, puis jusqu'à 3 ans à compter du dernier échange pour le suivi commercial, sauf obligation légale contraire ou demande de suppression de votre part.
       </p>
       <p class="text-sm leading-relaxed text-slate-700">
-        Une copie locale éventuelle dans le navigateur (<code class="rounded bg-slate-100 px-1">localStorage</code>) peut être effacée par vos soins via les paramètres du navigateur.
+        Votre choix de consentement aux cookies est mémorisé localement dans votre navigateur (<code class="rounded bg-slate-100 px-1">localStorage</code>) ; vous pouvez l'effacer via les paramètres du navigateur.
       </p>
     </section>
 
     <section class="mt-10 space-y-3">
-      <h2 class="font-display text-xl font-bold text-night">6. Vos droits</h2>
+      <h2 class="font-display text-xl font-bold text-night">6. Vos droits (modification / suppression)</h2>
       <p class="text-sm leading-relaxed text-slate-700">
-        Vous disposez des droits d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité, dans les conditions prévues par la réglementation. Pour les exercer :
+        Conformément au RGPD, vous disposez des droits d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité. Vous pouvez notamment demander la <span class="font-semibold text-night">modification ou la suppression</span> de vos données en envoyant un e-mail à :
       </p>
       <p class="text-sm leading-relaxed text-slate-700">
         <a class="font-semibold text-emerald hover:underline" href="mailto:contact@optimasse-conseil.fr">contact@optimasse-conseil.fr</a>
@@ -132,9 +121,15 @@
     </section>
 
     <section class="mt-10 space-y-3">
-      <h2 class="font-display text-xl font-bold text-night">7. Cookies</h2>
+      <h2 class="font-display text-xl font-bold text-night">7. Cookies et pixels de suivi</h2>
       <p class="text-sm leading-relaxed text-slate-700">
-        Le site n'utilise pas de cookies publicitaires. Des cookies ou technologies équivalentes peuvent être déposés par des services tiers intégrés (notamment HubSpot) lors de l'affichage du formulaire de contact ou du widget de prise de rendez-vous. Vous pouvez paramétrer votre navigateur pour limiter ou bloquer ces cookies.
+        Le site peut utiliser des cookies et technologies équivalentes (notamment le <span class="font-semibold text-night">Meta Pixel</span> lié aux campagnes Meta Ads) afin de mesurer l'audience du site et l'efficacité des campagnes publicitaires.
+      </p>
+      <p class="text-sm leading-relaxed text-slate-700">
+        Ces traceurs de mesure / publicité ne sont déposés qu'<span class="font-semibold text-night">après votre consentement</span> via le bandeau cookies. Vous pouvez accepter ou refuser ; votre choix est mémorisé et le bandeau ne s'affiche plus à chaque visite. Vous pouvez modifier votre choix en effaçant les données du site dans votre navigateur.
+      </p>
+      <p class="text-sm leading-relaxed text-slate-700">
+        Des cookies ou technologies équivalentes peuvent également être déposés par des services tiers intégrés (notamment HubSpot) lors de l'affichage du formulaire de contact ou du widget de prise de rendez-vous, nécessaires au fonctionnement de ces services.
       </p>
     </section>
 
@@ -145,7 +140,7 @@
       </p>
     </section>
 
-    <p class="mt-14 text-xs text-slate-500">Dernière mise à jour : 19 septembre 2026</p>
+    <p class="mt-14 text-xs text-slate-500">Dernière mise à jour : 23 octobre 2026</p>
   </main>
 
   <footer class="border-t border-slate-200 bg-night py-8 text-center text-xs text-slate-500">
