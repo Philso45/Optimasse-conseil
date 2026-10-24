@@ -393,7 +393,7 @@
                 <div>
                   <p class="text-xs font-bold uppercase tracking-wider text-emerald-800">Bonus tutorat</p>
                   <p class="mt-1 text-sm text-slate-700">
-                    Indemnisation du temps de votre tuteur interne (jusqu'à 200&nbsp;€ / mois).
+                    Indemnisation du temps de votre tuteur interne (jusqu'à 600&nbsp;€ / mois par poste).
                   </p>
                 </div>
                 <div class="shrink-0 rounded-md bg-white px-4 py-2.5 text-left shadow-sm sm:text-right">
@@ -999,9 +999,10 @@
         const economieNetteCumulee = totalClassiqueVal - totalOptiMasse;
         const economieParPosteVal = economieNetteCumulee / nbPostes;
 
-        const BONUS_TUTORAT_MENSUEL = 200;
-        const bonusTutoratMin = BONUS_TUTORAT_MENSUEL * nbPostes;
-        const bonusTutoratMax = BONUS_TUTORAT_MENSUEL * 3 * nbPostes;
+        const BONUS_TUTORAT_MIN = 200;
+        const BONUS_TUTORAT_MAX = 600;
+        const bonusTutoratMin = BONUS_TUTORAT_MIN * nbPostes;
+        const bonusTutoratMax = BONUS_TUTORAT_MAX * nbPostes;
 
         const totalClassiqueArrondi = Math.round(totalClassiqueVal);
         const totalOptiArrondi = Math.round(totalOptiMasse);
