@@ -69,7 +69,7 @@
       '<div class="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between lg:px-8">' +
       '<p class="text-sm leading-relaxed text-slate-300 sm:max-w-2xl">' +
       'Nous utilisons des cookies pour analyser notre trafic et mesurer l\'efficacité de nos campagnes. ' +
-      '<a href="politique-confidentialite.html" class="font-medium text-emerald underline-offset-2 hover:text-emerald-400 hover:underline">En savoir plus</a>.' +
+      '<a href="/politique-confidentialite" class="font-medium text-emerald underline-offset-2 hover:text-emerald-400 hover:underline">En savoir plus</a>.' +
       '</p>' +
       '<div class="flex shrink-0 flex-wrap gap-2">' +
       '<button type="button" id="cookie-refuse" ' +
