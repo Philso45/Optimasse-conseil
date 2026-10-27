@@ -6,39 +6,45 @@
   <title>OptiMasse Conseil — Optimisation des coûts d'embauche pour TPE</title>
   <meta name="description" content="0 € de salaire pendant la pré-intégration, puis embauche à coût optimisé. Montage du dispositif et optimisation des charges pour commerçants et TPE." />
 
-  <!-- Meta Pixel Code (le plus haut possible dans le <head>) -->
-  <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
+  <!-- Meta Pixel : stub + PageView en file d'attente dès l'ouverture (fbevents différé après paint) -->
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window,document);
     fbq('init', '1036304956133147');
     fbq('track', 'PageView');
+    function omLoadFbevents(){
+      if (window.__omFbevents) return;
+      window.__omFbevents = true;
+      var t = document.createElement('script');
+      t.async = true;
+      t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+      document.head.appendChild(t);
+    }
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(omLoadFbevents, { timeout: 2500 });
+    } else {
+      window.addEventListener('load', omLoadFbevents);
+    }
   </script>
   <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1036304956133147&ev=PageView&noscript=1" alt="" /></noscript>
-  <!-- End Meta Pixel Code -->
 
   <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="favicon.png" />
 
-  <!-- Ressources critiques above-the-fold (Header / Hero) -->
-  <link rel="preload" as="image" href="hero.png" fetchpriority="high" />
-  <link rel="preload" as="image" href="logo.png" />
+  <!-- Critiques only : CSS + LCP hero (pas de concurrence logo/fonts/pixel) -->
+  <link rel="preload" href="styles.css" as="style" />
+  <link rel="preload" as="image" href="hero.webp" type="image/webp" fetchpriority="high" />
+  <link rel="stylesheet" href="styles.css" />
 
-  <!-- Polices : preconnect + chargement non bloquant -->
+  <!-- Polices non bloquantes, poids réduits -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" media="print" onload="this.media='all'" />
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" />
   </noscript>
-
-  <!-- CSS compilé (remplace le CDN Tailwind, qui bloquait le rendu) -->
-  <link rel="stylesheet" href="styles.css" />
   <style>
     html { scroll-behavior: smooth; }
 
@@ -208,7 +214,7 @@
   <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 lg:px-8">
       <a href="#top" class="inline-flex items-center gap-2.5 font-display text-lg font-bold tracking-tight text-white md:gap-3 md:text-xl" id="logo">
-        <img src="logo.png" alt="" width="56" height="34" class="h-8 w-auto object-contain md:h-9" decoding="async" fetchpriority="high" />
+        <img src="logo.webp" alt="" width="56" height="34" class="h-8 w-auto object-contain md:h-9" decoding="async" />
         <span>OptiMasse Conseil</span>
       </a>
       <nav class="hidden items-center gap-8 text-sm font-medium text-slate-300 lg:flex" aria-label="Navigation principale">
@@ -250,16 +256,19 @@
 
     <!-- ========== HERO ========== -->
     <section class="hero-atmosphere relative min-h-[100svh] overflow-hidden text-white" aria-labelledby="hero-title">
-      <img
-        src="hero.png"
-        alt=""
-        width="1024"
-        height="576"
-        class="hero-media"
-        decoding="sync"
-        fetchpriority="high"
-        aria-hidden="true"
-      />
+      <picture>
+        <source srcset="hero.webp" type="image/webp" />
+        <img
+          src="hero.jpg"
+          alt=""
+          width="960"
+          height="540"
+          class="hero-media"
+          decoding="sync"
+          fetchpriority="high"
+          aria-hidden="true"
+        />
+      </picture>
       <div class="hero-veil absolute inset-0 pointer-events-none" aria-hidden="true"></div>
 
       <div class="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-center px-5 pb-16 pt-28 lg:px-8 lg:pt-24">
@@ -777,7 +786,7 @@
   <footer class="border-t border-slate-200 bg-night text-slate-400">
     <div class="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-12 sm:flex-row sm:items-center sm:justify-between lg:px-8">
       <div class="flex items-start gap-3">
-        <img src="logo.png" alt="" width="48" height="29" class="mt-0.5 h-8 w-auto shrink-0 object-contain" aria-hidden="true" />
+        <img src="logo.webp" alt="" width="48" height="29" class="mt-0.5 h-8 w-auto shrink-0 object-contain" loading="lazy" decoding="async" aria-hidden="true" />
         <div>
           <p class="font-display text-lg font-bold text-white">OptiMasse Conseil</p>
           <p class="mt-1 text-sm">Optimisation des coûts d'embauche pour commerçants et TPE — expertise restauration.</p>
