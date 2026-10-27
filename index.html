@@ -867,7 +867,7 @@
         meetingEmbedMounted = true;
       }
 
-      /* Ajuste la hauteur si HubSpot envoie un resize */
+      /* HubSpot iframe : resize + Lead Meta quand RDV / formulaire confirmé */
       window.addEventListener('message', function (event) {
         if (!event.origin || event.origin.indexOf('hubspot') === -1) return;
         var data = event.data;
@@ -875,6 +875,15 @@
           try { data = JSON.parse(data); } catch (err) { return; }
         }
         if (!data || typeof data !== 'object') return;
+
+        var isHsFormLead = data.type === 'hsFormCallback' && data.eventName === 'onFormSubmitted';
+        var isMeetingLead = data.meetingBookSucceeded === true
+          || data.meetingBookSucceeded === 'true'
+          || data.eventName === 'onMeetingBooked';
+        if ((isHsFormLead || isMeetingLead) && typeof fbq === 'function') {
+          fbq('track', 'Lead');
+        }
+
         var height = data.height || (data.payload && data.payload.height) || data.iFrameHeight;
         if (height) sizeMeetingFrame(height);
       });
