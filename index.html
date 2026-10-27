@@ -5,32 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OptiMasse Conseil — Optimisation des coûts d'embauche pour TPE</title>
   <meta name="description" content="0 € de salaire pendant la pré-intégration, puis embauche à coût optimisé. Montage du dispositif et optimisation des charges pour commerçants et TPE." />
+
+  <!-- Meta Pixel Code (le plus haut possible dans le <head>) -->
+  <link rel="preconnect" href="https://connect.facebook.net" crossorigin />
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1036304956133147');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1036304956133147&ev=PageView&noscript=1" alt="" /></noscript>
+  <!-- End Meta Pixel Code -->
+
   <link rel="icon" href="favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="favicon.png" />
+
+  <!-- Ressources critiques above-the-fold (Header / Hero) -->
+  <link rel="preload" as="image" href="hero.png" fetchpriority="high" />
+  <link rel="preload" as="image" href="logo.png" />
+
+  <!-- Polices : preconnect + chargement non bloquant -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            night: '#0F172A',
-            emerald: '#10B981',
-            mist: '#F8FAFC',
-          },
-          fontFamily: {
-            display: ['Syne', 'sans-serif'],
-            sans: ['Outfit', 'sans-serif'],
-          },
-          boxShadow: {
-            soft: '0 12px 40px -16px rgba(15, 23, 42, 0.18)',
-          },
-        },
-      },
-    };
-  </script>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" />
+  </noscript>
+
+  <!-- CSS compilé (remplace le CDN Tailwind, qui bloquait le rendu) -->
+  <link rel="stylesheet" href="styles.css" />
   <style>
     html { scroll-behavior: smooth; }
 
@@ -191,6 +199,7 @@
       }
     }
   </style>
+  <!-- Bannière cookies (non critique pour le FCP) -->
   <script src="cookie-consent.js" defer></script>
 </head>
 <body class="antialiased">
@@ -199,7 +208,7 @@
   <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 lg:px-8">
       <a href="#top" class="inline-flex items-center gap-2.5 font-display text-lg font-bold tracking-tight text-white md:gap-3 md:text-xl" id="logo">
-        <img src="logo.png" alt="" width="56" height="34" class="h-8 w-auto object-contain md:h-9" />
+        <img src="logo.png" alt="" width="56" height="34" class="h-8 w-auto object-contain md:h-9" decoding="async" fetchpriority="high" />
         <span>OptiMasse Conseil</span>
       </a>
       <nav class="hidden items-center gap-8 text-sm font-medium text-slate-300 lg:flex" aria-label="Navigation principale">
@@ -247,7 +256,7 @@
         width="1024"
         height="576"
         class="hero-media"
-        decoding="async"
+        decoding="sync"
         fetchpriority="high"
         aria-hidden="true"
       />

@@ -19,9 +19,17 @@
     } catch (e) { /* ignore */ }
   }
 
+  /**
+   * Charge le Meta Pixel si absent du head (pages secondaires).
+   * Sur index.html le snippet est déjà en haut du <head> : on ne re-track pas PageView.
+   */
   function loadMetaPixel() {
     if (pixelLoaded || typeof window === 'undefined') return;
     pixelLoaded = true;
+
+    if (typeof window.fbq === 'function') {
+      return;
+    }
 
     !(function (f, b, e, v, n, t, s) {
       if (f.fbq) return;
@@ -98,6 +106,14 @@
 
   function init() {
     var consent = getConsent();
+    /* Sur la home le Pixel est déjà dans le <head> : pas de second PageView. */
+    if (typeof window.fbq === 'function') {
+      pixelLoaded = true;
+      if (consent !== 'refused' && consent !== 'accepted') {
+        buildBanner();
+      }
+      return;
+    }
     if (consent === 'accepted') {
       loadMetaPixel();
       return;
